@@ -7,23 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C13EF8392833841A007AE7B2 /* PoemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13EF8382833841A007AE7B2 /* PoemsViewController.swift */; };
+		C13EF83C28338484007AE7B2 /* WriterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13EF83B28338484007AE7B2 /* WriterViewController.swift */; };
+		C13EF83E283384C1007AE7B2 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13EF83D283384C1007AE7B2 /* StorageManager.swift */; };
 		C1C9C1A2282CF243002AD499 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C9C1A1282CF243002AD499 /* AppDelegate.swift */; };
 		C1C9C1A4282CF243002AD499 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C9C1A3282CF243002AD499 /* SceneDelegate.swift */; };
-		C1C9C1A6282CF243002AD499 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C9C1A5282CF243002AD499 /* ViewController.swift */; };
+		C1C9C1A6282CF243002AD499 /* SynonymViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C9C1A5282CF243002AD499 /* SynonymViewController.swift */; };
 		C1C9C1A9282CF243002AD499 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1C9C1A7282CF243002AD499 /* Main.storyboard */; };
 		C1C9C1AB282CF244002AD499 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1C9C1AA282CF244002AD499 /* Assets.xcassets */; };
 		C1C9C1AE282CF244002AD499 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1C9C1AC282CF244002AD499 /* LaunchScreen.storyboard */; };
+		C1C9C1B6282D18E7002AD499 /* Synonym&Rhyme.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C9C1B5282D18E7002AD499 /* Synonym&Rhyme.swift */; };
+		C1C9C1B8282D1CB8002AD499 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C9C1B7282D1CB8002AD499 /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C13EF8382833841A007AE7B2 /* PoemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoemsViewController.swift; sourceTree = "<group>"; };
+		C13EF83B28338484007AE7B2 /* WriterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriterViewController.swift; sourceTree = "<group>"; };
+		C13EF83D283384C1007AE7B2 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		C1C9C19E282CF243002AD499 /* PoemApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PoemApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1C9C1A1282CF243002AD499 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C1C9C1A3282CF243002AD499 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C1C9C1A5282CF243002AD499 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C1C9C1A5282CF243002AD499 /* SynonymViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SynonymViewController.swift; sourceTree = "<group>"; };
 		C1C9C1A8282CF243002AD499 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C1C9C1AA282CF244002AD499 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C1C9C1AD282CF244002AD499 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C1C9C1AF282CF244002AD499 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C1C9C1B5282D18E7002AD499 /* Synonym&Rhyme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Synonym&Rhyme.swift"; sourceTree = "<group>"; };
+		C1C9C1B7282D1CB8002AD499 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +47,51 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C13EF83A2833842B007AE7B2 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				C13EF8382833841A007AE7B2 /* PoemsViewController.swift */,
+				C13EF83B28338484007AE7B2 /* WriterViewController.swift */,
+				C1C9C1A5282CF243002AD499 /* SynonymViewController.swift */,
+			);
+			path = VC;
+			sourceTree = "<group>";
+		};
+		C1712F1128322E4B00361750 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C1C9C1B5282D18E7002AD499 /* Synonym&Rhyme.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		C1712F1228322EC100361750 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				C13EF83D283384C1007AE7B2 /* StorageManager.swift */,
+				C1C9C1B7282D1CB8002AD499 /* NetworkManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		C1712F1328322EEC00361750 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				C1C9C1A7282CF243002AD499 /* Main.storyboard */,
+				C1C9C1AC282CF244002AD499 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		C1A5FA4B2834A5FE00B14A21 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				C1C9C1A1282CF243002AD499 /* AppDelegate.swift */,
+				C1C9C1A3282CF243002AD499 /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
 		C1C9C195282CF243002AD499 = {
 			isa = PBXGroup;
 			children = (
@@ -56,12 +111,12 @@
 		C1C9C1A0282CF243002AD499 /* PoemApp */ = {
 			isa = PBXGroup;
 			children = (
-				C1C9C1A1282CF243002AD499 /* AppDelegate.swift */,
-				C1C9C1A3282CF243002AD499 /* SceneDelegate.swift */,
-				C1C9C1A5282CF243002AD499 /* ViewController.swift */,
-				C1C9C1A7282CF243002AD499 /* Main.storyboard */,
+				C13EF83A2833842B007AE7B2 /* VC */,
+				C1712F1128322E4B00361750 /* Models */,
+				C1712F1228322EC100361750 /* Services */,
+				C1712F1328322EEC00361750 /* Storyboards */,
+				C1A5FA4B2834A5FE00B14A21 /* App */,
 				C1C9C1AA282CF244002AD499 /* Assets.xcassets */,
-				C1C9C1AC282CF244002AD499 /* LaunchScreen.storyboard */,
 				C1C9C1AF282CF244002AD499 /* Info.plist */,
 			);
 			path = PoemApp;
@@ -138,9 +193,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C1C9C1A6282CF243002AD499 /* ViewController.swift in Sources */,
+				C1C9C1A6282CF243002AD499 /* SynonymViewController.swift in Sources */,
+				C13EF83E283384C1007AE7B2 /* StorageManager.swift in Sources */,
+				C1C9C1B6282D18E7002AD499 /* Synonym&Rhyme.swift in Sources */,
+				C13EF83C28338484007AE7B2 /* WriterViewController.swift in Sources */,
+				C1C9C1B8282D1CB8002AD499 /* NetworkManager.swift in Sources */,
 				C1C9C1A2282CF243002AD499 /* AppDelegate.swift in Sources */,
 				C1C9C1A4282CF243002AD499 /* SceneDelegate.swift in Sources */,
+				C13EF8392833841A007AE7B2 /* PoemsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

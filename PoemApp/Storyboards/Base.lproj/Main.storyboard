@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cGk-yV-0rI">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Synonyms & Rhymes-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="SynonymViewController" customModule="PoemApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="QpW-yV-VPJ">
+                                <rect key="frame" x="20" y="260" width="374" height="573"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="JUF-ej-h4m">
+                                        <rect key="frame" x="0.0" y="44.5" width="374" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JUF-ej-h4m" id="kJC-By-TN1">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="b1N-ij-EN6"/>
+                                    <outlet property="delegate" destination="8bC-Xf-vdC" id="nSI-vU-aAg"/>
+                                </connections>
+                            </tableView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="wi4-rB-79i">
+                                <rect key="frame" x="100" y="199" width="214" height="32"/>
+                                <segments>
+                                    <segment title="Synonyms"/>
+                                    <segment title="Rhymes"/>
+                                </segments>
+                            </segmentedControl>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="d7d-uZ-IN0">
+                                <rect key="frame" x="20" y="118" width="374" height="51"/>
+                                <color key="backgroundColor" red="0.96470588239999999" green="0.94117647059999998" blue="0.90980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" red="0.96470588239999999" green="0.94117647059999998" blue="0.90980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="wi4-rB-79i" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="100" id="J8r-wV-5Rg"/>
+                            <constraint firstItem="wi4-rB-79i" firstAttribute="top" secondItem="d7d-uZ-IN0" secondAttribute="bottom" constant="30" id="NHj-b0-sq4"/>
+                            <constraint firstItem="QpW-yV-VPJ" firstAttribute="top" secondItem="wi4-rB-79i" secondAttribute="bottom" constant="30" id="NbU-vy-B7R"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="QpW-yV-VPJ" secondAttribute="trailing" constant="20" id="WLj-Qu-CTV"/>
+                            <constraint firstItem="d7d-uZ-IN0" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="YZw-zR-hhj"/>
+                            <constraint firstItem="QpW-yV-VPJ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="crE-iE-Wom"/>
+                            <constraint firstItem="d7d-uZ-IN0" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="nVf-1j-shu"/>
+                            <constraint firstItem="QpW-yV-VPJ" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="20" id="srZ-yX-y0T"/>
+                            <constraint firstItem="d7d-uZ-IN0" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="uy6-iF-7qf"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="wi4-rB-79i" secondAttribute="trailing" constant="100" id="wgf-9k-GTR"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Synonyms &amp; Rhymes" id="xkr-Tc-BrR"/>
+                    <connections>
+                        <outlet property="cellTableView" destination="QpW-yV-VPJ" id="XH1-4W-53Z"/>
+                        <outlet property="segmentedControl" destination="wi4-rB-79i" id="wXq-Xy-ETL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1883" y="98"/>
+        </scene>
+        <!--Poems-->
+        <scene sceneID="lkj-74-kfo">
+            <objects>
+                <viewController id="obq-9Q-na5" customClass="PoemsViewController" customModule="PoemApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dGi-Co-DqP">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="oHC-4Y-zbs">
+                                <rect key="frame" x="20" y="148" width="374" height="665"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="poem" id="D7V-bM-pKT">
+                                        <rect key="frame" x="0.0" y="44.5" width="374" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="D7V-bM-pKT" id="Su5-Zx-1ic">
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="DoV-LX-xUN" kind="show" id="xrJ-Si-Ixq"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="tGi-5a-eUl" id="pQ5-qf-dPF"/>
+                                    <outlet property="delegate" destination="tGi-5a-eUl" id="yL7-h2-KdG"/>
+                                </connections>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2tA-md-T7B">
+                                <rect key="frame" x="270" y="88" width="124" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="U4Q-QK-yAP"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="124" id="VhK-pb-AUx"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="gray" title="+ New poem"/>
+                                <connections>
+                                    <action selector="newPoemButton:" destination="q9G-hS-uqJ" eventType="touchUpInside" id="5LX-IH-Y3l"/>
+                                    <segue destination="DoV-LX-xUN" kind="show" id="Qme-Ng-Fiz"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="DyD-p7-1gr"/>
+                        <color key="backgroundColor" red="0.96470588239999999" green="0.94117647059999998" blue="0.90980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="DyD-p7-1gr" firstAttribute="trailing" secondItem="oHC-4Y-zbs" secondAttribute="trailing" constant="20" id="5gV-v3-bKS"/>
+                            <constraint firstItem="2tA-md-T7B" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="DyD-p7-1gr" secondAttribute="leading" symbolic="YES" id="L3a-Ax-BYY"/>
+                            <constraint firstItem="2tA-md-T7B" firstAttribute="top" secondItem="DyD-p7-1gr" secondAttribute="top" id="Qet-h4-GRa"/>
+                            <constraint firstItem="DyD-p7-1gr" firstAttribute="bottom" secondItem="oHC-4Y-zbs" secondAttribute="bottom" id="atB-fp-LYu"/>
+                            <constraint firstItem="oHC-4Y-zbs" firstAttribute="top" secondItem="DyD-p7-1gr" secondAttribute="top" constant="60" id="lHu-uP-kdz"/>
+                            <constraint firstItem="DyD-p7-1gr" firstAttribute="trailing" secondItem="2tA-md-T7B" secondAttribute="trailing" constant="20" id="wVW-Rj-QKJ"/>
+                            <constraint firstItem="oHC-4Y-zbs" firstAttribute="leading" secondItem="DyD-p7-1gr" secondAttribute="leading" constant="20" id="x6p-fk-3WB"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Poems" id="tGi-5a-eUl"/>
+                    <connections>
+                        <outlet property="newPoemButton" destination="2tA-md-T7B" id="Ewd-4W-qOc"/>
+                        <outlet property="poemsTableView" destination="oHC-4Y-zbs" id="Q4k-wK-yeP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B16-EL-GQU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="q9G-hS-uqJ" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1882.608695652174" y="-615.40178571428567"/>
+        </scene>
+        <!--Writer View Controller-->
+        <scene sceneID="2WJ-hi-JWs">
+            <objects>
+                <viewController id="DoV-LX-xUN" customClass="WriterViewController" customModule="PoemApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pfX-Ld-6jO">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SLb-h8-X11">
+                                <rect key="frame" x="175.5" y="140" width="63" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="3vc-3z-81y"/>
+                                    <constraint firstAttribute="width" constant="63" id="7En-tT-5Te"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="33"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="star.fill" catalog="system"/>
+                                <buttonConfiguration key="configuration" style="plain" image="star" catalog="system"/>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="The name of your poem" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QCD-DR-lR1">
+                                <rect key="frame" x="20" y="220" width="374" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="QX2-i0-NEW">
+                                <rect key="frame" x="20" y="274" width="374" height="509"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="NEX-Dh-LbA"/>
+                        <color key="backgroundColor" red="0.96470588235294119" green="0.94117647058823528" blue="0.90980392156862744" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="NEX-Dh-LbA" firstAttribute="trailing" secondItem="QCD-DR-lR1" secondAttribute="trailing" constant="20" id="5d1-Wo-eA4"/>
+                            <constraint firstItem="SLb-h8-X11" firstAttribute="centerX" secondItem="pfX-Ld-6jO" secondAttribute="centerX" id="73o-Kb-0TM"/>
+                            <constraint firstItem="QCD-DR-lR1" firstAttribute="leading" secondItem="NEX-Dh-LbA" secondAttribute="leading" constant="20" id="Ixm-Hf-6ba"/>
+                            <constraint firstItem="SLb-h8-X11" firstAttribute="top" secondItem="NEX-Dh-LbA" secondAttribute="top" id="O87-xS-dhW"/>
+                            <constraint firstItem="QX2-i0-NEW" firstAttribute="leading" secondItem="NEX-Dh-LbA" secondAttribute="leading" constant="20" id="Su1-wo-ULz"/>
+                            <constraint firstItem="QCD-DR-lR1" firstAttribute="top" secondItem="SLb-h8-X11" secondAttribute="bottom" constant="20" id="fy4-df-McS"/>
+                            <constraint firstItem="QX2-i0-NEW" firstAttribute="top" secondItem="QCD-DR-lR1" secondAttribute="bottom" constant="20" id="mAC-Fm-N7j"/>
+                            <constraint firstItem="NEX-Dh-LbA" firstAttribute="bottom" secondItem="QX2-i0-NEW" secondAttribute="bottom" constant="30" id="sVh-j0-fzL"/>
+                            <constraint firstItem="NEX-Dh-LbA" firstAttribute="trailing" secondItem="QX2-i0-NEW" secondAttribute="trailing" constant="20" id="wa3-ml-7md"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="YZK-aj-hF3"/>
+                    <connections>
+                        <outlet property="headerTextField" destination="QCD-DR-lR1" id="hyj-QI-Y17"/>
+                        <outlet property="mainTextView" destination="QX2-i0-NEW" id="sy8-My-Vsr"/>
+                        <outlet property="starButton" destination="SLb-h8-X11" id="0AY-Qe-G7J"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AJY-KG-2ma" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2765" y="-615"/>
+        </scene>
+        <!--Synonyms-->
+        <scene sceneID="05p-PA-1Nq">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Lte-YA-bJu" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Synonyms" image="star" catalog="system" id="zFD-IW-2Bd">
+                        <color key="badgeColor" red="0.7951230172" green="0.89922329509999999" blue="0.7583799712" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    </tabBarItem>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="F04-n8-uKA">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="m7y-4g-8jg"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E2L-aF-Hr1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="864" y="98"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="gdX-XS-QQM">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="cGk-yV-0rI" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="ahy-jF-yfJ">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" systemColor="systemBrownColor"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" systemColor="systemBrownColor"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="cBJ-X2-UMS" kind="relationship" relationship="viewControllers" id="NuL-77-8Ko"/>
+                        <segue destination="Lte-YA-bJu" kind="relationship" relationship="viewControllers" id="vTO-ZR-K3r"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UuK-Vc-S3g" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-365" y="-220"/>
+        </scene>
+        <!--Poems-->
+        <scene sceneID="g1F-2e-sTU">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cBJ-X2-UMS" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Poems" image="book" catalog="system" id="Vb4-6g-iWq">
+                        <color key="badgeColor" red="0.95556506360000004" green="0.83916704310000001" blue="0.70353635879999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    </tabBarItem>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="uXu-Vu-YTn">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="obq-9Q-na5" kind="relationship" relationship="rootViewController" id="lSV-Bq-z6Z"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ra0-uh-ccA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="864" y="-615"/>
+        </scene>
+    </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="xrJ-Si-Ixq"/>
+    </inferredMetricsTieBreakers>
+    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+    <resources>
+        <image name="book" catalog="system" width="128" height="99"/>
+        <image name="star" catalog="system" width="128" height="116"/>
+        <image name="star.fill" catalog="system" width="128" height="116"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBrownColor">
+            <color red="0.63529411764705879" green="0.51764705882352946" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
