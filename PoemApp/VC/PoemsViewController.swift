@@ -17,7 +17,6 @@ class PoemsViewController: UIViewController {
     @IBOutlet var poemsTableView: UITableView!
     @IBOutlet var newPoemButton: UIButton!
     
-    
     private var poems: [String] = []
 
     override func viewDidLoad() {
@@ -25,21 +24,29 @@ class PoemsViewController: UIViewController {
         poems = StorageManager.shared.fetchPoems()
     
     }
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let writerVC = segue.destination as! WriterViewController
+        writerVC.delegate = self
+    }
 
 }
 // MARK: - UITAbleViewDataSource
 extension PoemsViewController: UITableViewDataSource {
     
-
-func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    poems.count
-}
-
-func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    <#code#>
-}
-
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        poems.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = poemsTableView.dequeueReusableCell(withIdentifier: "poem", for: indexPath)
+        let poem = poems[indexPath.row]
+        var content = cell.defaultContentConfiguration()
+        content.text = poem
+        cell.contentConfiguration = content
+        return cell
+    }
+    
 }
 // MARK: - UITableViewDelegate
 extension PoemsViewController: UITableViewDelegate {

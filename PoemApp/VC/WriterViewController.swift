@@ -18,8 +18,21 @@ class WriterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-   
+        
     }
     
+    @IBAction func saveButton(_ sender: UIBarButtonItem) {
+        savedPoem()
+    }
+    
+    private func savedPoem() {
+        guard let header = headerTextField.text else { return }
+        guard let textPoem = mainTextView.text else { return }
+        let poem = Poem(header: header, textPoem: textPoem)
+        StorageManager.shared.save(poem: poem.header)
+        
+        delegate.savePoem(poem.header)
+        dismiss(animated: true)
+    }
 
 }

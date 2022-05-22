@@ -91,14 +91,11 @@
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="DoV-LX-xUN" kind="show" id="xrJ-Si-Ixq"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="tGi-5a-eUl" id="pQ5-qf-dPF"/>
-                                    <outlet property="delegate" destination="tGi-5a-eUl" id="yL7-h2-KdG"/>
+                                    <outlet property="dataSource" destination="obq-9Q-na5" id="Q8L-09-GmF"/>
+                                    <outlet property="delegate" destination="obq-9Q-na5" id="v2B-OX-eI2"/>
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2tA-md-T7B">
@@ -110,8 +107,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="gray" title="+ New poem"/>
                                 <connections>
-                                    <action selector="newPoemButton:" destination="q9G-hS-uqJ" eventType="touchUpInside" id="5LX-IH-Y3l"/>
-                                    <segue destination="DoV-LX-xUN" kind="show" id="Qme-Ng-Fiz"/>
+                                    <segue destination="DoV-LX-xUN" kind="show" id="OR0-4x-6El"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -134,7 +130,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B16-EL-GQU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="q9G-hS-uqJ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1882.608695652174" y="-615.40178571428567"/>
         </scene>
@@ -184,7 +179,14 @@
                             <constraint firstItem="NEX-Dh-LbA" firstAttribute="trailing" secondItem="QX2-i0-NEW" secondAttribute="trailing" constant="20" id="wa3-ml-7md"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="YZK-aj-hF3"/>
+                    <navigationItem key="navigationItem" id="YZK-aj-hF3">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="save" id="p4l-ez-DMS">
+                            <color key="tintColor" red="0.63584938010000003" green="0.27138910550000001" blue="0.20786123300000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <connections>
+                                <action selector="savedPoem:" destination="DoV-LX-xUN" id="8Je-Q1-BBa"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="headerTextField" destination="QCD-DR-lR1" id="hyj-QI-Y17"/>
                         <outlet property="mainTextView" destination="QX2-i0-NEW" id="sy8-My-Vsr"/>
@@ -259,9 +261,6 @@
             <point key="canvasLocation" x="864" y="-615"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="xrJ-Si-Ixq"/>
-    </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
     <resources>
         <image name="book" catalog="system" width="128" height="99"/>
