@@ -91,6 +91,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="DoV-LX-xUN" kind="show" identifier="details" id="eJu-Fl-1Hm"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -183,7 +186,7 @@
                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="save" id="p4l-ez-DMS">
                             <color key="tintColor" red="0.63584938010000003" green="0.27138910550000001" blue="0.20786123300000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <connections>
-                                <action selector="savedPoem:" destination="DoV-LX-xUN" id="8Je-Q1-BBa"/>
+                                <segue destination="Klj-DU-B9G" kind="unwind" unwindAction="unwindFor:" id="pb9-sk-Qhm"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -194,6 +197,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AJY-KG-2ma" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="Klj-DU-B9G" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2765" y="-615"/>
         </scene>
@@ -261,6 +265,9 @@
             <point key="canvasLocation" x="864" y="-615"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="eJu-Fl-1Hm"/>
+    </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
     <resources>
         <image name="book" catalog="system" width="128" height="99"/>

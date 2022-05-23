@@ -28,4 +28,10 @@ class StorageManager {
         
         return []
     }
+    
+    func deletePoem(at index: Int) {
+        var poems = fetchPoems()
+        poems.remove(at: index)
+        userDefaults.set(poems, forKey: key)
+    }
 }

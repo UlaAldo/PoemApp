@@ -13,26 +13,16 @@ class WriterViewController: UIViewController {
     @IBOutlet var headerTextField: UITextField!
     @IBOutlet var mainTextView: UITextView!
    
-    var delegate: WriterViewControllerDelegate!
+    var poems: Poem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        headerTextField.text = poems.header
+//        mainTextView.text = poems.textPoem
+        
+    }
+    
 
-        
-    }
-    
-    @IBAction func saveButton(_ sender: UIBarButtonItem) {
-        savedPoem()
-    }
-    
-    private func savedPoem() {
-        guard let header = headerTextField.text else { return }
-        guard let textPoem = mainTextView.text else { return }
-        let poem = Poem(header: header, textPoem: textPoem)
-        StorageManager.shared.save(poem: poem.header)
-        
-        delegate.savePoem(poem.header)
-        dismiss(animated: true)
-    }
+
 
 }

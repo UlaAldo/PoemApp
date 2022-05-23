@@ -7,13 +7,8 @@
 
 import UIKit
 
-protocol WriterViewControllerDelegate {
-    func savePoem(_ contact: String)
-}
-
 class PoemsViewController: UIViewController {
     
-
     @IBOutlet var poemsTableView: UITableView!
     @IBOutlet var newPoemButton: UIButton!
     
@@ -24,9 +19,20 @@ class PoemsViewController: UIViewController {
         poems = StorageManager.shared.fetchPoems()
     
     }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let writerVC = segue.destination as! WriterViewController
-        writerVC.delegate = self
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        let writerVC = segue.destination as! WriterViewController
+//        writerVC.poems = poems
+//
+//    }
+    
+    @IBAction func unwind(for segue: UIStoryboardSegue) {
+        guard let writerVC = segue.source as? WriterViewController else { return }
+        guard let header = writerVC.headerTextField.text else { return }
+        guard let textPoem = writerVC.mainTextView.text else { return }
+        let poem = Poem(header: header, textPoem: textPoem)
+        poems.append(poem.header)
+        StorageManager.shared.save(poem: poem.header)
+        poemsTableView.reloadData()
     }
 
 }
@@ -51,12 +57,45 @@ extension PoemsViewController: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 extension PoemsViewController: UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let poem = poems[indexPath.row]
+        performSegue(withIdentifier: "details", sender: poem)
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == .delete {
+            StorageManager.shared.deletePoem(at: indexPath.row)
+            poems.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let verticalPadding: CGFloat = 8
+        let maskLayer = CALayer()
+        maskLayer.cornerRadius = 10
+        maskLayer.backgroundColor = UIColor.black.cgColor
+        maskLayer.frame = CGRect(x: cell.bounds.origin.x,
+                                 y: cell.bounds.origin.y,
+                                 width: cell.bounds.width,
+                                 height: cell.bounds.height).insetBy(dx: 0, dy: verticalPadding/2)
+        cell.layer.mask = maskLayer
+    }
+    
+}
+// MARK: - Navigation
+extension PoemsViewController: UINavigationControllerDelegate {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    guard let writerVC = segue.destination as? WriterViewController else { return }
+//        guard let indexPath = tableView.indexPathForSelectedRow else { return }
+//        let track = trackList[indexPath.row]
+        writerVC.poems = sender as? Poem
 }
 
-// MARK: - NewContactViewControllerDelegate
-extension PoemsViewController: WriterViewControllerDelegate {
-    func savePoem(_ poem: String) {
-        poems.append(poem)
-        poemsTableView.reloadData()
-    }
 }
