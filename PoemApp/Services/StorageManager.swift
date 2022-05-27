@@ -15,14 +15,14 @@ class StorageManager {
     
     private init() {}
     
-    func save(poem: String) {
+    func save(poem: Poem) {
         var poems = fetchPoems()
         poems.append(poem)
         userDefaults.set(poems, forKey: key)
     }
     
-    func fetchPoems() -> [String] {
-        if let poems = userDefaults.value(forKey: key) as? [String] {
+    func fetchPoems() -> [Poem] {
+        if let poems = userDefaults.value(forKey: key) as? [Poem] {
             return poems
         }
         

@@ -17,8 +17,11 @@ class WriterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        headerTextField.text = poems.header
-//        mainTextView.text = poems.textPoem
+        
+        if poems != nil {
+        headerTextField.text = poems?.header
+        mainTextView.text = poems?.textPoem
+        }
         
     }
     
