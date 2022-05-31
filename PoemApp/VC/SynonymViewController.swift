@@ -7,19 +7,28 @@
 
 import UIKit
 
-class SynonymViewController: UIViewController,  UITableViewDataSource, UITableViewDelegate {
+class SynonymViewController: UIViewController,  UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
 
     @IBOutlet var cellTableView: UITableView!
     @IBOutlet var segmentedControl: UISegmentedControl!
+    @IBOutlet var searchTextField: UITextField!
     
     private var synonyms: [Synonym] = []
     private var rhymes: [String] = []
     
+    private let word = "dog"
     
 //    lazy var one = rhymes.first?.rhymes.components(separatedBy: ", ")
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        searchTextField.delegate = self
+        
+        searchTextField.addTarget(self,
+                                  action: #selector(go),
+                                  for: .editingChanged)
+        
+       
 //        cellTableView.isHidden = true
 //        switch segmentedControl.selectedSegmentIndex {
 //        case 0:
@@ -28,7 +37,16 @@ class SynonymViewController: UIViewController,  UITableViewDataSource, UITableVi
 //            fetchRhymes()
 //        }
         }
+    @objc private func go() -> String {
+        guard let word = searchTextField.text else { return "" }
+        return word
+    }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+            searchTextField.resignFirstResponder()
+            
+        return true
+    }
 //    override func viewWillLayoutSubviews() {
 //        switch segmentedControl.selectedSegmentIndex {
 //        case 0:
@@ -37,8 +55,10 @@ class SynonymViewController: UIViewController,  UITableViewDataSource, UITableVi
 //            fetchRhymes()
 //        }
 //    }
+    
+    
     override func viewWillAppear(_ animated: Bool) {
-//        cellTableView.isHidden = false
+//       cellTableView.isHidden = false
         switch segmentedControl.selectedSegmentIndex {
         case 0:
             fetchSynonyms()
@@ -48,14 +68,14 @@ class SynonymViewController: UIViewController,  UITableViewDataSource, UITableVi
     }
 
     func fetchSynonyms() {
-        NetworkManager.shared.fetchSynonym { synonyms in
+        NetworkManager.shared.fetchSynonym(with: word) { synonyms in
             self.synonyms = synonyms
             self.cellTableView.reloadData()
     }
 }
     func fetchRhymes() {
         NetworkManager.shared.fetchRhymes { rhymes in
-            self.rhymes = rhymes.rhymes.components(separatedBy: ", ")
+            self.rhymes = rhymes.components(separatedBy: ", ")
             self.cellTableView.reloadData()
         }
     }

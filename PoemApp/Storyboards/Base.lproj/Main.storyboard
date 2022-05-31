@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="QpW-yV-VPJ">
-                                <rect key="frame" x="20" y="260" width="374" height="573"/>
+                                <rect key="frame" x="20" y="243" width="374" height="590"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="JUF-ej-h4m">
@@ -35,42 +35,43 @@
                                 </connections>
                             </tableView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="wi4-rB-79i">
-                                <rect key="frame" x="100" y="199" width="214" height="32"/>
+                                <rect key="frame" x="100" y="182" width="214" height="32"/>
                                 <segments>
                                     <segment title="Synonyms"/>
                                     <segment title="Rhymes"/>
                                 </segments>
                             </segmentedControl>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="d7d-uZ-IN0">
-                                <rect key="frame" x="20" y="118" width="374" height="51"/>
-                                <color key="backgroundColor" red="0.96470588239999999" green="0.94117647059999998" blue="0.90980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="write the word" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iqj-4J-jpw">
+                                <rect key="frame" x="20" y="118" width="374" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.96470588239999999" green="0.94117647059999998" blue="0.90980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="iqj-4J-jpw" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="6BY-ko-bz1"/>
                             <constraint firstItem="wi4-rB-79i" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="100" id="J8r-wV-5Rg"/>
-                            <constraint firstItem="wi4-rB-79i" firstAttribute="top" secondItem="d7d-uZ-IN0" secondAttribute="bottom" constant="30" id="NHj-b0-sq4"/>
                             <constraint firstItem="QpW-yV-VPJ" firstAttribute="top" secondItem="wi4-rB-79i" secondAttribute="bottom" constant="30" id="NbU-vy-B7R"/>
+                            <constraint firstItem="wi4-rB-79i" firstAttribute="top" secondItem="iqj-4J-jpw" secondAttribute="bottom" constant="30" id="Rjt-lM-6iJ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="QpW-yV-VPJ" secondAttribute="trailing" constant="20" id="WLj-Qu-CTV"/>
-                            <constraint firstItem="d7d-uZ-IN0" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="YZw-zR-hhj"/>
                             <constraint firstItem="QpW-yV-VPJ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="crE-iE-Wom"/>
-                            <constraint firstItem="d7d-uZ-IN0" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="nVf-1j-shu"/>
+                            <constraint firstItem="iqj-4J-jpw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="ggI-by-hwR"/>
                             <constraint firstItem="QpW-yV-VPJ" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="20" id="srZ-yX-y0T"/>
-                            <constraint firstItem="d7d-uZ-IN0" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="uy6-iF-7qf"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="wi4-rB-79i" secondAttribute="trailing" constant="100" id="wgf-9k-GTR"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="iqj-4J-jpw" secondAttribute="trailing" constant="20" id="wmI-Of-YIR"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Synonyms &amp; Rhymes" id="xkr-Tc-BrR"/>
                     <connections>
                         <outlet property="cellTableView" destination="QpW-yV-VPJ" id="XH1-4W-53Z"/>
+                        <outlet property="searchTextField" destination="iqj-4J-jpw" id="rFz-Y6-zdu"/>
                         <outlet property="segmentedControl" destination="wi4-rB-79i" id="wXq-Xy-ETL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1883" y="98"/>
+            <point key="canvasLocation" x="1882.608695652174" y="97.767857142857139"/>
         </scene>
         <!--Poems-->
         <scene sceneID="lkj-74-kfo">
@@ -84,7 +85,7 @@
                                 <rect key="frame" x="20" y="148" width="374" height="665"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="poem" textLabel="VAq-9e-ZPK" detailTextLabel="BQy-Ji-nP6" style="IBUITableViewCellStyleValue1" id="D7V-bM-pKT">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="poem" textLabel="VAq-9e-ZPK" detailTextLabel="BQy-Ji-nP6" style="IBUITableViewCellStyleSubtitle" id="D7V-bM-pKT">
                                         <rect key="frame" x="0.0" y="44.5" width="374" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="D7V-bM-pKT" id="Su5-Zx-1ic">
@@ -92,16 +93,16 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VAq-9e-ZPK">
-                                                    <rect key="frame" x="20" y="33" width="25" height="14.5"/>
+                                                    <rect key="frame" x="20" y="24" width="25" height="14.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="BQy-Ji-nP6">
-                                                    <rect key="frame" x="304.5" y="33" width="33" height="14.5"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="BQy-Ji-nP6">
+                                                    <rect key="frame" x="20" y="40.5" width="30.5" height="13.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -199,7 +200,7 @@
                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="save" id="p4l-ez-DMS">
                             <color key="tintColor" red="0.63584938010000003" green="0.27138910550000001" blue="0.20786123300000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <connections>
-                                <segue destination="Klj-DU-B9G" kind="unwind" unwindAction="unwindFor:" id="pb9-sk-Qhm"/>
+                                <segue destination="Klj-DU-B9G" kind="unwind" unwindAction="unwindFor:" id="GnG-OE-ZpC"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

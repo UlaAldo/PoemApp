@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 struct ResultSynonym: Decodable {
     let result: [Synonym]
 }
@@ -20,6 +19,8 @@ struct Synonym: Decodable {
 struct Rhymes: Decodable {
     let rhymes: String
 }
+
+
 
 struct Poem {
     var header: String
