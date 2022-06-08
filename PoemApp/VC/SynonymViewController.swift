@@ -16,9 +16,7 @@ class SynonymViewController: UIViewController,  UITableViewDataSource, UITableVi
     private var synonyms: [Synonym] = []
     private var rhymes: [String] = []
     
-    private let word = "dog"
-    
-//    lazy var one = rhymes.first?.rhymes.components(separatedBy: ", ")
+    private var word = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,44 +26,21 @@ class SynonymViewController: UIViewController,  UITableViewDataSource, UITableVi
                                   action: #selector(go),
                                   for: .editingChanged)
         
-       
-//        cellTableView.isHidden = true
-//        switch segmentedControl.selectedSegmentIndex {
-//        case 0:
-//            fetchSynonyms()
-//        default:
-//            fetchRhymes()
-//        }
+
         }
-    @objc private func go() -> String {
-        guard let word = searchTextField.text else { return "" }
-        return word
+    
+    @objc private func go() {
+        word = searchTextField.text ?? ""
+        fetchSynonyms()
+        fetchRhymes()
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
             searchTextField.resignFirstResponder()
-            
+    
         return true
     }
-//    override func viewWillLayoutSubviews() {
-//        switch segmentedControl.selectedSegmentIndex {
-//        case 0:
-//            fetchSynonyms()
-//        default:
-//            fetchRhymes()
-//        }
-//    }
     
-    
-    override func viewWillAppear(_ animated: Bool) {
-//       cellTableView.isHidden = false
-        switch segmentedControl.selectedSegmentIndex {
-        case 0:
-            fetchSynonyms()
-        default:
-            fetchRhymes()
-        }
-    }
 
     func fetchSynonyms() {
         NetworkManager.shared.fetchSynonym(with: word) { synonyms in
@@ -74,22 +49,21 @@ class SynonymViewController: UIViewController,  UITableViewDataSource, UITableVi
     }
 }
     func fetchRhymes() {
-        NetworkManager.shared.fetchRhymes { rhymes in
+        NetworkManager.shared.fetchRhymes(with: word) { rhymes in
             self.rhymes = rhymes.components(separatedBy: ", ")
             self.cellTableView.reloadData()
         }
     }
-//    let new = result.map{$0.synonyms.components(separatedBy: ", ")}
 
-        
+// MARK: TableView
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         switch segmentedControl.selectedSegmentIndex {
         case 0:
             return synonyms.count
         default:
-            return 0
+            return 1
         }
-        
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -97,10 +71,16 @@ class SynonymViewController: UIViewController,  UITableViewDataSource, UITableVi
         case 0:
             return synonyms.map{$0.definition}[section]
         default:
-            return ""
+            return nil
         }
-       
     }
+    
+    private func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 100))
+        
+        return headerView
+    }
+    
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch segmentedControl.selectedSegmentIndex {

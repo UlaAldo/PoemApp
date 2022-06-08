@@ -23,6 +23,6 @@ struct Rhymes: Decodable {
 
 
 struct Poem {
-    var header: String
-    var textPoem: String
+    let header: String
+    let textPoem: String
 }

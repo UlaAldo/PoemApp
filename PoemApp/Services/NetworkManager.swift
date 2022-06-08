@@ -34,8 +34,8 @@ class NetworkManager {
                    }.resume()
                }
     
-    func fetchRhymes(completion: @escaping(String) -> Void) {
-    guard let url = URL(string: "https://www.abbreviations.com/services/v2/rhymes.php?uid=10372&tokenid=EDC29k8h49mQsBxL&term=cat&format=json") else { return }
+    func fetchRhymes(with userWord: String, completion: @escaping(String) -> Void) {
+    guard let url = URL(string: "https://www.abbreviations.com/services/v2/rhymes.php?uid=10372&tokenid=EDC29k8h49mQsBxL&term=\(userWord)&format=json") else { return }
 
         URLSession.shared.dataTask(with: url) { data, _, error in
                        guard let data = data else {
@@ -45,7 +45,7 @@ class NetworkManager {
                        do {
                            let rhyme = try JSONDecoder().decode(Rhymes.self, from: data)
                            DispatchQueue.main.async {
-                               print(rhyme)
+                               print(rhyme.rhymes)
                                completion(rhyme.rhymes)
                            }
                        } catch let error {
