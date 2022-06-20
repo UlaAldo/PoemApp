@@ -5,33 +5,68 @@
 //  Created by Юлия Алдохина on 17/05/22.
 //
 
-import Foundation
+import CoreData
 
 class StorageManager {
     static let shared = StorageManager()
     
-    private let userDefaults = UserDefaults.standard
-    private let key = "poems"
-    
-    private init() {}
-    
-    func save(poem: Poem) {
-        var poems = fetchPoems()
-        poems.append(poem)
-        userDefaults.set(poems, forKey: key)
-    }
-    
-    func fetchPoems() -> [Poem] {
-        if let poems = userDefaults.value(forKey: key) as? [Poem] {
-            return poems
+    // MARK: - Core Data stack
+    private let persistentContainer: NSPersistentContainer = {
+        let container = NSPersistentContainer(name: "PoemApp")
+        container.loadPersistentStores { _, error in
+            if let error = error as NSError? {
+                fatalError("Unresolved error \(error), \(error.userInfo)")
+            }
         }
-        
-        return []
+        return container
+    }()
+    
+    private let viewContext: NSManagedObjectContext
+    
+    private init() {
+        viewContext = persistentContainer.viewContext
     }
     
-    func deletePoem(at index: Int) {
-        var poems = fetchPoems()
-        poems.remove(at: index)
-        userDefaults.set(poems, forKey: key)
+    // MARK: - Public Methods
+    func fetchData(completion: (Result<[Poem], Error>) -> Void) {
+        let fetchRequest = Poem.fetchRequest()
+        
+        do {
+            let poems = try viewContext.fetch(fetchRequest)
+            completion(.success(poems))
+        } catch let error {
+            completion(.failure(error))
+        }
+    }
+    
+    func save(_ header: String, _ text: String, completion: (Poem) -> Void) {
+        let poem = Poem(context: viewContext)
+        poem.headerPoem = header
+        poem.textPoem = text
+        completion(poem)
+        saveContext()
+    }
+    
+    func edit(_ poem: Poem, newHeader: String, newText: String) {
+        poem.headerPoem = newHeader
+        poem.textPoem = newText
+        saveContext()
+    }
+    
+    func delete(_ poem: Poem) {
+        viewContext.delete(poem)
+        saveContext()
+    }
+
+    // MARK: - Core Data Saving support
+    func saveContext() {
+        if viewContext.hasChanges {
+            do {
+                try viewContext.save()
+            } catch {
+                let nserror = error as NSError
+                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+            }
+        }
     }
 }

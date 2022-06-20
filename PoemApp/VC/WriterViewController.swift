@@ -12,20 +12,40 @@ class WriterViewController: UIViewController {
     @IBOutlet var starButton: UIButton!
     @IBOutlet var headerTextField: UITextField!
     @IBOutlet var mainTextView: UITextView!
-   
-    var poems: Poem!
+    @IBOutlet var saveButton: UIBarButtonItem!
+    
+//    var selectedPoem: Poem!
+    
+    var poem: Poem!
+    
+    var delegate: WriterViewControllerDelegate!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if poems != nil {
-        headerTextField.text = poems?.header
-        mainTextView.text = poems?.textPoem
-        }
+        headerTextField.text = poem?.headerPoem
+        mainTextView.text = poem?.textPoem
         
     }
+
+    @IBAction func saveAction() {
+        saveAndExit()
+
+        }
+    
+    
+    private func saveAndExit() {
+        guard let header = headerTextField.text else { return }
+        guard let text = mainTextView.text else { return }
+        
+        StorageManager.shared.save(header, text) { poem in
+            self.poem = poem
+        }
+        
+        delegate.savePoem(poem)
+        dismiss(animated: true)
+    }
+}
+
+
     
 
-
-
-}

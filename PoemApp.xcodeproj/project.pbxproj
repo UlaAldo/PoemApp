@@ -10,6 +10,7 @@
 		C13EF8392833841A007AE7B2 /* PoemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13EF8382833841A007AE7B2 /* PoemsViewController.swift */; };
 		C13EF83C28338484007AE7B2 /* WriterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13EF83B28338484007AE7B2 /* WriterViewController.swift */; };
 		C13EF83E283384C1007AE7B2 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13EF83D283384C1007AE7B2 /* StorageManager.swift */; };
+		C166A9F62850E976001A8E14 /* PoemApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C166A9F42850E976001A8E14 /* PoemApp.xcdatamodeld */; };
 		C1C9C1A2282CF243002AD499 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C9C1A1282CF243002AD499 /* AppDelegate.swift */; };
 		C1C9C1A4282CF243002AD499 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C9C1A3282CF243002AD499 /* SceneDelegate.swift */; };
 		C1C9C1A6282CF243002AD499 /* SynonymViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C9C1A5282CF243002AD499 /* SynonymViewController.swift */; };
@@ -24,6 +25,7 @@
 		C13EF8382833841A007AE7B2 /* PoemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoemsViewController.swift; sourceTree = "<group>"; };
 		C13EF83B28338484007AE7B2 /* WriterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriterViewController.swift; sourceTree = "<group>"; };
 		C13EF83D283384C1007AE7B2 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		C166A9F52850E976001A8E14 /* PoemApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PoemApp.xcdatamodel; sourceTree = "<group>"; };
 		C1C9C19E282CF243002AD499 /* PoemApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PoemApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1C9C1A1282CF243002AD499 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C1C9C1A3282CF243002AD499 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 				C1A5FA4B2834A5FE00B14A21 /* App */,
 				C1C9C1AA282CF244002AD499 /* Assets.xcassets */,
 				C1C9C1AF282CF244002AD499 /* Info.plist */,
+				C166A9F42850E976001A8E14 /* PoemApp.xcdatamodeld */,
 			);
 			path = PoemApp;
 			sourceTree = "<group>";
@@ -194,6 +197,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C1C9C1A6282CF243002AD499 /* SynonymViewController.swift in Sources */,
+				C166A9F62850E976001A8E14 /* PoemApp.xcdatamodeld in Sources */,
 				C13EF83E283384C1007AE7B2 /* StorageManager.swift in Sources */,
 				C1C9C1B6282D18E7002AD499 /* PoemModels.swift in Sources */,
 				C13EF83C28338484007AE7B2 /* WriterViewController.swift in Sources */,
@@ -418,6 +422,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		C166A9F42850E976001A8E14 /* PoemApp.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C166A9F52850E976001A8E14 /* PoemApp.xcdatamodel */,
+			);
+			currentVersion = C166A9F52850E976001A8E14 /* PoemApp.xcdatamodel */;
+			path = PoemApp.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = C1C9C196282CF243002AD499 /* Project object */;
 }

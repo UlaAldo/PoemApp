@@ -22,7 +22,7 @@ struct Rhymes: Decodable {
 
 
 
-struct Poem {
-    let header: String
-    let textPoem: String
-}
+//struct Poem {
+//    let header: String
+//    let textPoem: String
+//}
