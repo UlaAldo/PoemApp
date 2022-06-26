@@ -8,7 +8,8 @@
 import UIKit
 
 protocol WriterViewControllerDelegate {
-    func savePoem(_ contact: Poem)
+    func savePoem(_ poem: Poem)
+
 }
 
 class PoemsViewController: UIViewController {
@@ -20,14 +21,22 @@ class PoemsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchData()
+//        fetchData()
+        poemsTableView.layer.cornerRadius = 10
+        
     
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        fetchData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let writerVC = segue.destination as! WriterViewController
+        guard let writerVC = segue.destination as? WriterViewController else { return }
         writerVC.delegate = self
-        
+        guard let indexPath = poemsTableView.indexPathForSelectedRow else { return }
+        let poem = poems[indexPath.row]
+        writerVC.poem = poem
+       
     }
 
     private func fetchData() {
@@ -35,6 +44,7 @@ class PoemsViewController: UIViewController {
             switch result {
             case .success(let poems):
                 self.poems = poems
+                self.poemsTableView.reloadData()
             case .failure(let error):
                 print(error.localizedDescription)
             }
@@ -96,10 +106,16 @@ extension PoemsViewController: UITableViewDelegate {
     
 }
 
+
 extension PoemsViewController: WriterViewControllerDelegate {
+    
     func savePoem(_ poem: Poem) {
-        poems.append(poem)
+        StorageManager.shared.save(poem.headerPoem!, poem.textPoem!) { poem in
+            self.poems.append(poem)
+        }
         poemsTableView.reloadData()
+//        poemsTableView.insertRows(at: [IndexPath(row: poems.count - 1, section: 0)], with: .automatic)
+
     }
 }
 

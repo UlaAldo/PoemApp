@@ -47,6 +47,7 @@ class StorageManager {
         saveContext()
     }
     
+    
     func edit(_ poem: Poem, newHeader: String, newText: String) {
         poem.headerPoem = newHeader
         poem.textPoem = newText

@@ -26,6 +26,7 @@ class SynonymViewController: UIViewController,  UITableViewDataSource, UITableVi
                                   action: #selector(go),
                                   for: .editingChanged)
         
+        cellTableView.layer.cornerRadius = 10
 
         }
     

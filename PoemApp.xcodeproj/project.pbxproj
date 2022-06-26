@@ -10,6 +10,9 @@
 		C13EF8392833841A007AE7B2 /* PoemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13EF8382833841A007AE7B2 /* PoemsViewController.swift */; };
 		C13EF83C28338484007AE7B2 /* WriterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13EF83B28338484007AE7B2 /* WriterViewController.swift */; };
 		C13EF83E283384C1007AE7B2 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13EF83D283384C1007AE7B2 /* StorageManager.swift */; };
+		C156D8EA2868782000DB802E /* NavBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = C156D8E92868782000DB802E /* NavBar.xib */; };
+		C156D8EC28687DC800DB802E /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C156D8EB28687DC800DB802E /* NavigationBar.swift */; };
+		C156D8EE28688ECB00DB802E /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C156D8ED28688ECB00DB802E /* TabBarViewController.swift */; };
 		C166A9F62850E976001A8E14 /* PoemApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C166A9F42850E976001A8E14 /* PoemApp.xcdatamodeld */; };
 		C1C9C1A2282CF243002AD499 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C9C1A1282CF243002AD499 /* AppDelegate.swift */; };
 		C1C9C1A4282CF243002AD499 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C9C1A3282CF243002AD499 /* SceneDelegate.swift */; };
@@ -25,6 +28,9 @@
 		C13EF8382833841A007AE7B2 /* PoemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoemsViewController.swift; sourceTree = "<group>"; };
 		C13EF83B28338484007AE7B2 /* WriterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriterViewController.swift; sourceTree = "<group>"; };
 		C13EF83D283384C1007AE7B2 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		C156D8E92868782000DB802E /* NavBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NavBar.xib; sourceTree = "<group>"; };
+		C156D8EB28687DC800DB802E /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
+		C156D8ED28688ECB00DB802E /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		C166A9F52850E976001A8E14 /* PoemApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PoemApp.xcdatamodel; sourceTree = "<group>"; };
 		C1C9C19E282CF243002AD499 /* PoemApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PoemApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1C9C1A1282CF243002AD499 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -52,6 +58,7 @@
 		C13EF83A2833842B007AE7B2 /* VC */ = {
 			isa = PBXGroup;
 			children = (
+				C156D8ED28688ECB00DB802E /* TabBarViewController.swift */,
 				C13EF8382833841A007AE7B2 /* PoemsViewController.swift */,
 				C13EF83B28338484007AE7B2 /* WriterViewController.swift */,
 				C1C9C1A5282CF243002AD499 /* SynonymViewController.swift */,
@@ -81,6 +88,8 @@
 			children = (
 				C1C9C1A7282CF243002AD499 /* Main.storyboard */,
 				C1C9C1AC282CF244002AD499 /* LaunchScreen.storyboard */,
+				C156D8E92868782000DB802E /* NavBar.xib */,
+				C156D8EB28687DC800DB802E /* NavigationBar.swift */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -184,6 +193,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C1C9C1AE282CF244002AD499 /* LaunchScreen.storyboard in Resources */,
+				C156D8EA2868782000DB802E /* NavBar.xib in Resources */,
 				C1C9C1AB282CF244002AD499 /* Assets.xcassets in Resources */,
 				C1C9C1A9282CF243002AD499 /* Main.storyboard in Resources */,
 			);
@@ -198,9 +208,11 @@
 			files = (
 				C1C9C1A6282CF243002AD499 /* SynonymViewController.swift in Sources */,
 				C166A9F62850E976001A8E14 /* PoemApp.xcdatamodeld in Sources */,
+				C156D8EE28688ECB00DB802E /* TabBarViewController.swift in Sources */,
 				C13EF83E283384C1007AE7B2 /* StorageManager.swift in Sources */,
 				C1C9C1B6282D18E7002AD499 /* PoemModels.swift in Sources */,
 				C13EF83C28338484007AE7B2 /* WriterViewController.swift in Sources */,
+				C156D8EC28687DC800DB802E /* NavigationBar.swift in Sources */,
 				C1C9C1B8282D1CB8002AD499 /* NetworkManager.swift in Sources */,
 				C1C9C1A2282CF243002AD499 /* AppDelegate.swift in Sources */,
 				C1C9C1A4282CF243002AD499 /* SceneDelegate.swift in Sources */,

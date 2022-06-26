@@ -22,28 +22,34 @@ class WriterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        headerTextField.text = poem?.headerPoem
-        mainTextView.text = poem?.textPoem
+        mainTextView.layer.cornerRadius = 10
+//        headerTextField.text = poem?.headerPoem
+//        mainTextView.text = poem?.textPoem
         
     }
 
     @IBAction func saveAction() {
-        saveAndExit()
-
-        }
-    
-    
-    private func saveAndExit() {
         guard let header = headerTextField.text else { return }
         guard let text = mainTextView.text else { return }
-        
-        StorageManager.shared.save(header, text) { poem in
-            self.poem = poem
-        }
+        poem?.textPoem = text
+        poem?.headerPoem = header
         
         delegate.savePoem(poem)
         dismiss(animated: true)
-    }
+        
+        }
+    
+//
+//    private func saveAndExit() {
+////        guard let header = headerTextField.text else { return }
+////        guard let text = mainTextView.text else { return }
+//        poem.textPoem = mainTextView.text
+//        poem.headerPoem = headerTextField.text
+//
+//
+//        delegate.savePoem(poem)
+//        dismiss(animated: true)
+//    }
 }
 
 
