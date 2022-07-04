@@ -7,50 +7,25 @@
 
 import UIKit
 
-protocol WriterViewControllerDelegate {
-    func savePoem(_ poem: Poem)
-
-}
 
 class PoemsViewController: UIViewController {
     
     @IBOutlet var poemsTableView: UITableView!
     @IBOutlet var newPoemButton: UIButton!
     
-    var poems: [Poem] = []
+    var poems = [Poem]() {
+        didSet {
+        poemsTableView.reloadData()
+    }
+}
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        fetchData()
+        poems = StorageManager.shared.fetchData()
         poemsTableView.layer.cornerRadius = 10
         
     
     }
-    override func viewWillAppear(_ animated: Bool) {
-        fetchData()
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let writerVC = segue.destination as? WriterViewController else { return }
-        writerVC.delegate = self
-        guard let indexPath = poemsTableView.indexPathForSelectedRow else { return }
-        let poem = poems[indexPath.row]
-        writerVC.poem = poem
-       
-    }
-
-    private func fetchData() {
-        StorageManager.shared.fetchData { result in
-            switch result {
-            case .success(let poems):
-                self.poems = poems
-                self.poemsTableView.reloadData()
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
-    }
-
 }
 // MARK: - UITAbleViewDataSource
 extension PoemsViewController: UITableViewDataSource {
@@ -60,12 +35,10 @@ extension PoemsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = poemsTableView.dequeueReusableCell(withIdentifier: "show", for: indexPath)
+        let cell = poemsTableView.dequeueReusableCell(withIdentifier: "show", for: indexPath) as! PoemCell
         let poem = poems[indexPath.row]
-        var content = cell.defaultContentConfiguration()
-        content.text = poem.headerPoem
-        content.secondaryText = poem.textPoem
-        cell.contentConfiguration = content
+        cell.configure(with: poem)
+
         return cell
     }
     
@@ -87,52 +60,26 @@ extension PoemsViewController: UITableViewDelegate {
         
         if editingStyle == .delete {
             StorageManager.shared.delete(poem)
-            poems.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .automatic)
+            poems = StorageManager.shared.fetchData()
         }
     }
-    
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let verticalPadding: CGFloat = 8
-        let maskLayer = CALayer()
-        maskLayer.cornerRadius = 10
-        maskLayer.backgroundColor = UIColor.black.cgColor
-        maskLayer.frame = CGRect(x: cell.bounds.origin.x,
-                                 y: cell.bounds.origin.y,
-                                 width: cell.bounds.width,
-                                 height: cell.bounds.height).insetBy(dx: 0, dy: verticalPadding/2)
-        cell.layer.mask = maskLayer
-    }
-    
 }
-
-
-extension PoemsViewController: WriterViewControllerDelegate {
-    
-    func savePoem(_ poem: Poem) {
-        StorageManager.shared.save(poem.headerPoem!, poem.textPoem!) { poem in
-            self.poems.append(poem)
-        }
-        poemsTableView.reloadData()
-//        poemsTableView.insertRows(at: [IndexPath(row: poems.count - 1, section: 0)], with: .automatic)
-
-    }
-}
-
 
 // MARK: - Navigation
-//extension PoemsViewController: UINavigationControllerDelegate {
-//
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        guard let writerVC = segue.destination as? WriterViewController else { return }
-//        guard let indexPath = poemsTableView.indexPathForSelectedRow else { return }
-//        let poem = poems[indexPath.row]
-//        writerVC.selectedPoem = poem
-//        writerVC.poem = { [weak self] poem in
-//            self?.poems.append(poem)
-//
-//        }
-//    }
-//
-//}
-
+extension PoemsViewController: UINavigationControllerDelegate {
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let identifier = segue.identifier {
+            if identifier == "displayPoem" {
+                let indexPath = poemsTableView.indexPathForSelectedRow!
+                let poem = poems[indexPath.row]
+                let displayNoteViewController = segue.destination as! WriterViewController
+                displayNoteViewController.poem = poem
+            }
+        }
+    }
+    
+    @IBAction func unwind(_ segue: UIStoryboardSegue) {
+        self.poems = StorageManager.shared.fetchData()
+    }
+}

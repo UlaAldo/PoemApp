@@ -10,7 +10,6 @@ import CoreData
 class StorageManager {
     static let shared = StorageManager()
     
-    // MARK: - Core Data stack
     private let persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "PoemApp")
         container.loadPersistentStores { _, error in
@@ -27,40 +26,29 @@ class StorageManager {
         viewContext = persistentContainer.viewContext
     }
     
-    // MARK: - Public Methods
-    func fetchData(completion: (Result<[Poem], Error>) -> Void) {
-        let fetchRequest = Poem.fetchRequest()
-        
+
+    func fetchData() -> [Poem] {
+        let fetchRequest = NSFetchRequest<Poem>(entityName: "Poem")
         do {
-            let poems = try viewContext.fetch(fetchRequest)
-            completion(.success(poems))
-        } catch let error {
-            completion(.failure(error))
+            let results = try viewContext.fetch(fetchRequest)
+            return results
+        } catch let error as NSError {
+            print("Could not fetch \(error)")
         }
+        return []
     }
     
-    func save(_ header: String, _ text: String, completion: (Poem) -> Void) {
-        let poem = Poem(context: viewContext)
-        poem.headerPoem = header
-        poem.textPoem = text
-        completion(poem)
-        saveContext()
-    }
-    
-    
-    func edit(_ poem: Poem, newHeader: String, newText: String) {
-        poem.headerPoem = newHeader
-        poem.textPoem = newText
-        saveContext()
+    func newPoem() -> Poem {
+        let poem = NSEntityDescription.insertNewObject(forEntityName: "Poem", into: viewContext) as! Poem
+        return poem
     }
     
     func delete(_ poem: Poem) {
         viewContext.delete(poem)
-        saveContext()
+        savePoem()
     }
 
-    // MARK: - Core Data Saving support
-    func saveContext() {
+    func savePoem() {
         if viewContext.hasChanges {
             do {
                 try viewContext.save()

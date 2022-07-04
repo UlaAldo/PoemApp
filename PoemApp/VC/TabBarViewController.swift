@@ -14,9 +14,8 @@ class TabBarViewController: UITabBarController {
         
         let appearance = UITabBarAppearance()
         
-        //       цвет иконок и текста
-        appearance.stackedLayoutAppearance.normal.iconColor = .black
-        appearance.stackedLayoutAppearance.normal.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+        appearance.stackedLayoutAppearance.normal.iconColor = .systemGray3
+        appearance.stackedLayoutAppearance.normal.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.systemGray3]
         
         appearance.stackedLayoutAppearance.selected.iconColor = .white
         appearance.stackedLayoutAppearance.selected.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
@@ -24,17 +23,5 @@ class TabBarViewController: UITabBarController {
         self.tabBar.standardAppearance = appearance
         
     }
-    
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

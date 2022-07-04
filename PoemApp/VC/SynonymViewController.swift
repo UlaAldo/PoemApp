@@ -7,33 +7,30 @@
 
 import UIKit
 
-class SynonymViewController: UIViewController,  UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
+class SynonymViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet var cellTableView: UITableView!
-    @IBOutlet var segmentedControl: UISegmentedControl!
     @IBOutlet var searchTextField: UITextField!
     
     private var synonyms: [Synonym] = []
-    private var rhymes: [String] = []
     
     private var word = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        cellTableView.delegate = self
+        cellTableView.dataSource = self
         searchTextField.delegate = self
-        
-        searchTextField.addTarget(self,
-                                  action: #selector(go),
-                                  for: .editingChanged)
-        
         cellTableView.layer.cornerRadius = 10
+        cellTableView.isHidden = true
 
         }
     
-    @objc private func go() {
+    @IBAction func showButton(_ sender: Any) {
         word = searchTextField.text ?? ""
         fetchSynonyms()
-        fetchRhymes()
+        cellTableView.isHidden = false
+        
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -49,84 +46,59 @@ class SynonymViewController: UIViewController,  UITableViewDataSource, UITableVi
             self.cellTableView.reloadData()
     }
 }
-    func fetchRhymes() {
-        NetworkManager.shared.fetchRhymes(with: word) { rhymes in
-            self.rhymes = rhymes.components(separatedBy: ", ")
-            self.cellTableView.reloadData()
-        }
-    }
+}
 
 // MARK: TableView
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        switch segmentedControl.selectedSegmentIndex {
-        case 0:
-            return synonyms.count
-        default:
-            return 1
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch segmentedControl.selectedSegmentIndex {
-        case 0:
-            return synonyms.map{$0.definition}[section]
-        default:
-            return nil
-        }
-    }
-    
-    private func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> UIView? {
-        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 100))
-        
-        return headerView
-    }
+extension SynonymViewController: UITableViewDataSource, UITableViewDelegate {
     
 
+    func numberOfSections(in tableView: UITableView) -> Int {
+        synonyms.count
+    }
+ 
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+       synonyms[section].definition.firstUppercased
+       
+    }
+
+//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//            50
+//        }
+   
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        let header = view as! UITableViewHeaderFooterView
+        
+        header.textLabel?.textColor = .systemGray2
+        header.textLabel?.font = UIFont.boldSystemFont(ofSize: 17)
+        
+        header.textLabel?.translatesAutoresizingMaskIntoConstraints = false
+        header.textLabel?.lineBreakMode = .byWordWrapping
+        header.textLabel?.numberOfLines = 0
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch segmentedControl.selectedSegmentIndex {
-        case 0:
-            return 1
-        default:
-            return rhymes.count
-        }
+        1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         var content = cell.defaultContentConfiguration()
         
-        switch segmentedControl.selectedSegmentIndex {
-        case 0:
-            let syn = synonyms[indexPath.section]
-            content.text = syn.synonyms
-        default:
-            let rhyme = rhymes[indexPath.row]
-            content.text = rhyme
-        }
-        
-//        let syn = synonyms[indexPath.section]
-//        content.text = syn.synonyms
+        let syn = synonyms[indexPath.section]
+        content.text = syn.synonyms.capitalized
         
         cell.contentConfiguration = content
         return cell
     }
+
+    }
+
+
+extension StringProtocol {
+    var firstUppercased: String { return prefix(1).uppercased() + dropFirst() }
 }
-        
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        result.count
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-//        var content = cell.defaultContentConfiguration()
-//
-//        let syn = result[indexPath.row]
-//        content.text = syn.synonyms
-//
-//        cell.contentConfiguration = content
-//        return cell
-//    }
-//
-
-
