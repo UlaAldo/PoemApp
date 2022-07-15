@@ -17,8 +17,10 @@ class PoemCell: UITableViewCell {
         titleLabel.text = poem.headerPoem
         secondLabel.text = poem.textPoem
         
+        
         if poem.star {
-            starImage.image = UIImage(systemName: "star")
+            starImage.image = UIImage(systemName: "star.fill")
+            starImage.tintColor = UIColor(red: 156/255, green: 171/255, blue: 160/255, alpha: 1)
         } else {
             starImage.image = nil
         }

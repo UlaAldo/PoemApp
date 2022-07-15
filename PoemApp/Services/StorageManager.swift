@@ -30,8 +30,8 @@ class StorageManager {
     func fetchData() -> [Poem] {
         let fetchRequest = NSFetchRequest<Poem>(entityName: "Poem")
         do {
-            let results = try viewContext.fetch(fetchRequest)
-            return results
+            let poems = try viewContext.fetch(fetchRequest)
+            return poems
         } catch let error as NSError {
             print("Could not fetch \(error)")
         }

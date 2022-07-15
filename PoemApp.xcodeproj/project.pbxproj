@@ -13,12 +13,12 @@
 		C13EF83E283384C1007AE7B2 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13EF83D283384C1007AE7B2 /* StorageManager.swift */; };
 		C156D8EE28688ECB00DB802E /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C156D8ED28688ECB00DB802E /* TabBarViewController.swift */; };
 		C166A9F62850E976001A8E14 /* PoemApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C166A9F42850E976001A8E14 /* PoemApp.xcdatamodeld */; };
+		C173C514287C26A80063BD8F /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C173C513287C26A80063BD8F /* AlertController.swift */; };
 		C1A3F7E9286C2FAE0016CFD7 /* RhymesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1A3F7E8286C2FAE0016CFD7 /* RhymesViewController.swift */; };
 		C1C9C1A2282CF243002AD499 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C9C1A1282CF243002AD499 /* AppDelegate.swift */; };
 		C1C9C1A4282CF243002AD499 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C9C1A3282CF243002AD499 /* SceneDelegate.swift */; };
 		C1C9C1A6282CF243002AD499 /* SynonymViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C9C1A5282CF243002AD499 /* SynonymViewController.swift */; };
 		C1C9C1A9282CF243002AD499 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1C9C1A7282CF243002AD499 /* Main.storyboard */; };
-		C1C9C1AB282CF244002AD499 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1C9C1AA282CF244002AD499 /* Assets.xcassets */; };
 		C1C9C1AE282CF244002AD499 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1C9C1AC282CF244002AD499 /* LaunchScreen.storyboard */; };
 		C1C9C1B6282D18E7002AD499 /* PoemModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C9C1B5282D18E7002AD499 /* PoemModels.swift */; };
 		C1C9C1B8282D1CB8002AD499 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C9C1B7282D1CB8002AD499 /* NetworkManager.swift */; };
@@ -31,13 +31,13 @@
 		C13EF83D283384C1007AE7B2 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		C156D8ED28688ECB00DB802E /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		C166A9F52850E976001A8E14 /* PoemApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PoemApp.xcdatamodel; sourceTree = "<group>"; };
+		C173C513287C26A80063BD8F /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
 		C1A3F7E8286C2FAE0016CFD7 /* RhymesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RhymesViewController.swift; sourceTree = "<group>"; };
 		C1C9C19E282CF243002AD499 /* PoemApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PoemApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1C9C1A1282CF243002AD499 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C1C9C1A3282CF243002AD499 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		C1C9C1A5282CF243002AD499 /* SynonymViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SynonymViewController.swift; sourceTree = "<group>"; };
 		C1C9C1A8282CF243002AD499 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C1C9C1AA282CF244002AD499 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C1C9C1AD282CF244002AD499 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C1C9C1AF282CF244002AD499 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C1C9C1B5282D18E7002AD499 /* PoemModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoemModels.swift; sourceTree = "<group>"; };
@@ -59,6 +59,7 @@
 			isa = PBXGroup;
 			children = (
 				C11696F7286AE5B4001699A4 /* PoemCell.swift */,
+				C173C513287C26A80063BD8F /* AlertController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -135,7 +136,6 @@
 				C1712F1228322EC100361750 /* Services */,
 				C1712F1328322EEC00361750 /* Storyboards */,
 				C1A5FA4B2834A5FE00B14A21 /* App */,
-				C1C9C1AA282CF244002AD499 /* Assets.xcassets */,
 				C1C9C1AF282CF244002AD499 /* Info.plist */,
 				C166A9F42850E976001A8E14 /* PoemApp.xcdatamodeld */,
 			);
@@ -201,7 +201,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C1C9C1AE282CF244002AD499 /* LaunchScreen.storyboard in Resources */,
-				C1C9C1AB282CF244002AD499 /* Assets.xcassets in Resources */,
 				C1C9C1A9282CF243002AD499 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -217,6 +216,7 @@
 				C11696F8286AE5B4001699A4 /* PoemCell.swift in Sources */,
 				C166A9F62850E976001A8E14 /* PoemApp.xcdatamodeld in Sources */,
 				C156D8EE28688ECB00DB802E /* TabBarViewController.swift in Sources */,
+				C173C514287C26A80063BD8F /* AlertController.swift in Sources */,
 				C1A3F7E9286C2FAE0016CFD7 /* RhymesViewController.swift in Sources */,
 				C13EF83E283384C1007AE7B2 /* StorageManager.swift in Sources */,
 				C1C9C1B6282D18E7002AD499 /* PoemModels.swift in Sources */,
