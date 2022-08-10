@@ -7,20 +7,23 @@
 Новые созданные стихотворения отображаются в представлении TableView.
 
 
-<img width="367" alt="1" src="https://user-images.githubusercontent.com/90995165/179259340-a26e656c-f689-4de2-a16e-86f027d6fbef.png">
-<img width="360" alt="2" src="https://user-images.githubusercontent.com/90995165/179259370-8ea91b59-2159-47d5-97a2-b8e60baa98ba.png">
+<img width="364" alt="1" src="https://user-images.githubusercontent.com/90995165/183964140-7c845c84-83d0-4651-983f-ae69a446d548.png">
+<img width="360" alt="2" src="https://user-images.githubusercontent.com/90995165/183964149-b73f4777-8a6e-431e-86d7-a2cc2ea29505.png">
+
 
 ⭐️ Можно пометить стихотворение как важное:
 
-<img width="367" alt="3" src="https://user-images.githubusercontent.com/90995165/179259377-14a7a446-aa49-4130-b315-273471b6ad26.png">
+<img width="360" alt="3" src="https://user-images.githubusercontent.com/90995165/183964185-156cd46d-5fde-4865-8ced-e37525753554.png">
+
 
 На TabBar можно выбрать вкладки Синонимы либо Рифмы.
 
-<img width="364" alt="4" src="https://user-images.githubusercontent.com/90995165/179259380-9fbe1501-95a8-4c18-8160-e1fb56c28c08.png">
-<img width="371" alt="5" src="https://user-images.githubusercontent.com/90995165/179259386-d6066107-a9b8-4fb5-9724-4c90602d33a1.png">
+<img width="367" alt="4" src="https://user-images.githubusercontent.com/90995165/183964287-e24dc663-599a-479e-8a7a-a4ad054fc778.png">
+<img width="362" alt="6" src="https://user-images.githubusercontent.com/90995165/183964294-c063335e-617a-488c-8418-7e638efb4d03.png">
+
 
 Если текстовое поле пустое, вылезает Alert:
 
-<img width="364" alt="6" src="https://user-images.githubusercontent.com/90995165/179259389-8ba273be-c99e-4d77-a290-618a2add1f80.png">
-<img width="365" alt="7" src="https://user-images.githubusercontent.com/90995165/179259393-4403ffee-2ecd-4a3b-961a-90e5e803325a.png">
+<img width="364" alt="5" src="https://user-images.githubusercontent.com/90995165/183964331-50af055a-d81f-44c9-bfae-1246215cbac9.png">
+
 # PoemApp
