@@ -39,10 +39,14 @@ class WriterViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "save" {
             let poem = self.poem ?? StorageManager.shared.newPoem()
-            poem.headerPoem = headerTextField.text
-            poem.textPoem = mainTextView.text
-            poem.star = status
-            StorageManager.shared.savePoem()
+            if headerTextField.text != "" || mainTextView.text != "" {
+                poem.headerPoem = headerTextField.text
+                poem.textPoem = mainTextView.text
+                poem.star = status
+                StorageManager.shared.savePoem()
+            } else {
+                StorageManager.shared.delete(poem)
+            }
         }
     }
     
@@ -56,7 +60,6 @@ class WriterViewController: UIViewController {
     private func setStatusForStarButton(_ color: Bool) {
         starButton.tintColor = color ? .systemYellow : .systemGray2
     }
-
 }
 
 // MARK: - extension: NSLayoutManagerDelegate
