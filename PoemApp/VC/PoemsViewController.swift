@@ -31,8 +31,8 @@ class PoemsViewController: UIViewController {
     
 // MARK: - Private methods
     private func setAppearance() {
-        poemsTableView.layer.cornerRadius = 10
-        newPoemButton.layer.cornerRadius = 10
+        poemsTableView.layer.borderWidth = 0.5
+        poemsTableView.layer.borderColor = UIColor(named: "DarkGreen")?.cgColor
     }
 }
 

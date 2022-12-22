@@ -12,6 +12,7 @@ class SynonymViewController: UIViewController {
 // MARK: - IB Outlets
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchTextField: UITextField!
+    @IBOutlet var spinner: UIActivityIndicatorView!
     
 // MARK: - Private properties
     private var synonyms: [Synonym] = []
@@ -25,7 +26,7 @@ class SynonymViewController: UIViewController {
         searchTextField.delegate = self
         tableView.layer.cornerRadius = 10
         tableView.isHidden = true
-        
+
     }
     
 // MARK: - IB Actions
@@ -47,9 +48,17 @@ class SynonymViewController: UIViewController {
     }
     
     private func fetchSynonyms() {
-        NetworkManager.shared.fetchSynonym(with: word) { synonyms in
-            self.synonyms = synonyms
-            self.tableView.reloadData()
+        spinner.isHidden = false
+        spinner.startAnimating()
+        NetworkManager.shared.fetchSynonym(word) { result in
+            switch result {
+            case .success(let synonyms):
+                self.synonyms = synonyms
+                self.tableView.reloadData()
+                self.spinner.stopAnimating()
+            case .failure(let error):
+                print(error)
+            }
         }
     }
     
@@ -57,6 +66,11 @@ class SynonymViewController: UIViewController {
 
 // MARK: - extension: UITextFieldDelegate
 extension SynonymViewController: UITextFieldDelegate {
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        view.endEditing(true)
+    }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         searchTextField.resignFirstResponder()
@@ -67,7 +81,8 @@ extension SynonymViewController: UITextFieldDelegate {
     func textFieldShouldClear(_ textField: UITextField) -> Bool {
         if textField == searchTextField {
             synonyms = []
-            tableView.reloadData()
+            tableView.isHidden = true
+            
         }
         return true
     }
@@ -121,6 +136,8 @@ extension SynonymViewController: UITableViewDelegate {
         header.textLabel?.numberOfLines = 3
         
     }
+    
+  
 }
 
 // MARK: - extension: StringProtocol

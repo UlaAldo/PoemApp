@@ -12,6 +12,7 @@ class RhymesViewController: UIViewController {
 // MARK: - IB Outlets
     @IBOutlet var showButton: UIButton!
     @IBOutlet var rhymesTextField: UITextField!
+    @IBOutlet var spinner: UIActivityIndicatorView!
     @IBOutlet var tableView: UITableView!
     
 // MARK: - Private properties
@@ -49,26 +50,41 @@ class RhymesViewController: UIViewController {
     }
 
     private func fetchRhymes() {
-        NetworkManager.shared.fetchRhymes(with: word) { rhymes in
-            self.rhymes = rhymes.components(separatedBy: ", ").map{$0.capitalized}
-            self.tableView.reloadData()
+        spinner.isHidden = false
+        spinner.startAnimating()
+        NetworkManager.shared.fetchRhymes(word) { result in
+            switch result {
+            case .success(let rhymes):
+                self.rhymes = rhymes.components(separatedBy: ", ").map{$0.capitalized}
+                self.tableView.reloadData()
+                self.spinner.stopAnimating()
+            case .failure(let error):
+                print(error)
+            }
+           
         }
     }
 }
 
 
 // MARK: - extension: UITextFieldDelegate
-    extension RhymesViewController: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-            rhymesTextField.resignFirstResponder()
+extension RhymesViewController: UITextFieldDelegate {
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        rhymesTextField.resignFirstResponder()
+        
         return true
     }
     
     func textFieldShouldClear(_ textField: UITextField) -> Bool {
         if textField == rhymesTextField {
             rhymes = []
-            tableView.reloadData()
+            tableView.isHidden = true
         }
         return true
     }
