@@ -12,10 +12,13 @@ class SynonymViewController: UIViewController {
 // MARK: - IB Outlets
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchTextField: UITextField!
+    @IBOutlet var spinner: UIActivityIndicatorView!
+    
     
 // MARK: - Private properties
     private var synonyms: [Synonym] = []
     private var word = ""
+    private let alert = UIAlertController()
     
 // MARK: - Life cycle methods
     override func viewDidLoad() {
@@ -23,9 +26,8 @@ class SynonymViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         searchTextField.delegate = self
-        tableView.layer.cornerRadius = 10
         tableView.isHidden = true
-        
+
     }
     
 // MARK: - IB Actions
@@ -36,20 +38,43 @@ class SynonymViewController: UIViewController {
     
 // MARK: - Private methods
     private func showSynonym() {
-        let alert = UIAlertController()
         word = searchTextField.text ?? ""
         if word.isEmpty {
-            alert.showAlert(fromController: self)
+            alert.showAlert(from: self, "Empty input", "Please, write the word")
         } else {
-            tableView.isHidden = false
             fetchSynonyms()
+
         }
     }
     
+    
     private func fetchSynonyms() {
-        NetworkManager.shared.fetchSynonym(with: word) { synonyms in
-            self.synonyms = synonyms
-            self.tableView.reloadData()
+        spinner.isHidden = false
+        spinner.startAnimating()
+        DispatchQueue.global(qos: .userInitiated).async {
+            NetworkManager.shared.fetchSynonym(self.word) { result in
+                switch result {
+                case .success(let synonyms):
+                    self.synonyms = synonyms
+                    
+                case .failure(let error):
+                    print(error)
+                    
+                }
+                DispatchQueue.main.async {
+                    self.showResult()
+                }
+            }
+        }
+    }
+    
+    private func showResult() {
+        spinner.stopAnimating()
+        if synonyms.isEmpty {
+            alert.showAlert(from: self, "Sorry", "Please, try another word")
+        } else {
+            tableView.isHidden = false
+            tableView.reloadData()
         }
     }
     
@@ -57,6 +82,11 @@ class SynonymViewController: UIViewController {
 
 // MARK: - extension: UITextFieldDelegate
 extension SynonymViewController: UITextFieldDelegate {
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        view.endEditing(true)
+    }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         searchTextField.resignFirstResponder()
@@ -67,7 +97,7 @@ extension SynonymViewController: UITextFieldDelegate {
     func textFieldShouldClear(_ textField: UITextField) -> Bool {
         if textField == searchTextField {
             synonyms = []
-            tableView.reloadData()
+            tableView.isHidden = true
         }
         return true
     }
@@ -121,6 +151,8 @@ extension SynonymViewController: UITableViewDelegate {
         header.textLabel?.numberOfLines = 3
         
     }
+    
+  
 }
 
 // MARK: - extension: StringProtocol

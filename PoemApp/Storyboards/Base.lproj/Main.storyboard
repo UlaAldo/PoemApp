@@ -42,7 +42,7 @@
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="QS1-oU-mcB">
                                 <rect key="frame" x="20" y="302.5" width="374" height="490.5"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="separatorInset" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="blue" indentationWidth="10" reuseIdentifier="cell" id="JXS-wa-IxM">
@@ -55,7 +55,17 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" id="Zu6-i4-Fhf">
+                                <rect key="frame" x="19.404908949032119" y="430.70308246248135" width="374.00000000006332" height="36.999999999993747"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="color" name="DarkGreen"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.90980392160000001" green="0.90980392160000001" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -75,6 +85,7 @@
                     <navigationItem key="navigationItem" title="Synonyms" id="xkr-Tc-BrR"/>
                     <connections>
                         <outlet property="searchTextField" destination="iqj-4J-jpw" id="rFz-Y6-zdu"/>
+                        <outlet property="spinner" destination="Zu6-i4-Fhf" id="pca-vG-mzo"/>
                         <outlet property="tableView" destination="QS1-oU-mcB" id="3tb-Xg-4IS"/>
                     </connections>
                 </viewController>
@@ -95,7 +106,7 @@
                                 <color key="tintColor" name="Text"/>
                                 <color key="textColor" name="Text"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done"/>
                             </textField>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fEL-Ix-VCZ">
                                 <rect key="frame" x="100" y="238.5" width="214" height="34"/>
@@ -128,7 +139,17 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <sections/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </tableView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" id="yaz-Yv-6dc">
+                                <rect key="frame" x="20" y="429" width="374" height="36.999999999993634"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="color" name="DarkGreen"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="5KX-2N-EJ7"/>
                         <color key="backgroundColor" red="0.90980392160000001" green="0.90980392160000001" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -149,6 +170,7 @@
                     <connections>
                         <outlet property="rhymesTextField" destination="fqO-xi-9v9" id="rLQ-1C-RY9"/>
                         <outlet property="showButton" destination="fEL-Ix-VCZ" id="96B-pX-e6g"/>
+                        <outlet property="spinner" destination="yaz-Yv-6dc" id="iJX-dK-Dyj"/>
                         <outlet property="tableView" destination="RVX-VB-Kzd" id="Qvq-Jl-X25"/>
                     </connections>
                 </viewController>
@@ -217,6 +239,11 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <outlet property="dataSource" destination="obq-9Q-na5" id="Q8L-09-GmF"/>
                                     <outlet property="delegate" destination="obq-9Q-na5" id="v2B-OX-eI2"/>
@@ -234,6 +261,11 @@
                                 <buttonConfiguration key="configuration" style="plain" title="+ New poem">
                                     <fontDescription key="titleFontDescription" type="system" pointSize="17"/>
                                 </buttonConfiguration>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <segue destination="DoV-LX-xUN" kind="show" identifier="addPoem" id="OR0-4x-6El"/>
                                 </connections>
@@ -300,7 +332,7 @@
                             </textView>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bet-tz-wD9">
                                 <rect key="frame" x="154.5" y="760" width="105" height="33"/>
-                                <color key="backgroundColor" red="0.89803921568627454" green="0.64313725490196083" blue="0.40392156862745099" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" name="Orange"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Bet-tz-wD9" secondAttribute="height" multiplier="99:31" id="Iyy-Yd-0Kj"/>
                                 </constraints>
@@ -406,7 +438,7 @@
                         <color key="badgeColor" red="0.95556506360000004" green="0.83916704310000001" blue="0.70353635879999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="uXu-Vu-YTn">
+                    <navigationBar key="navigationBar" clipsSubviews="YES" contentMode="scaleToFill" largeTitles="YES" id="uXu-Vu-YTn">
                         <rect key="frame" x="0.0" y="48" width="414" height="96.5"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.19517662109337028" green="0.27327967171717171" blue="0.057743974853747229" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -457,8 +489,11 @@
         <image name="star.bubble" catalog="system" width="128" height="110"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
         <image name="star.square.fill" catalog="system" width="128" height="114"/>
+        <namedColor name="DarkGreen">
+            <color red="0.49019607843137253" green="0.56862745098039214" blue="0.55686274509803924" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="Orange">
-            <color red="0.89803921568627454" green="0.64313725490196083" blue="0.40392156862745099" alpha="0.83999999999999997" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.95294117647058818" green="0.61176470588235299" blue="0.45490196078431372" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Text">
             <color red="0.19607843137254902" green="0.20000000000000001" blue="0.21568627450980393" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
