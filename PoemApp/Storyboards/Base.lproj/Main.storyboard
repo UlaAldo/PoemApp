@@ -55,6 +55,11 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </tableView>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" id="Zu6-i4-Fhf">
                                 <rect key="frame" x="19.404908949032119" y="430.70308246248135" width="374.00000000006332" height="36.999999999993747"/>
@@ -134,6 +139,11 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <sections/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </tableView>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" id="yaz-Yv-6dc">
                                 <rect key="frame" x="20" y="429" width="374" height="36.999999999993634"/>
@@ -322,7 +332,7 @@
                             </textView>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bet-tz-wD9">
                                 <rect key="frame" x="154.5" y="760" width="105" height="33"/>
-                                <color key="backgroundColor" red="0.89803921568627454" green="0.64313725490196083" blue="0.40392156862745099" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" name="Orange"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Bet-tz-wD9" secondAttribute="height" multiplier="99:31" id="Iyy-Yd-0Kj"/>
                                 </constraints>
@@ -428,7 +438,7 @@
                         <color key="badgeColor" red="0.95556506360000004" green="0.83916704310000001" blue="0.70353635879999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="uXu-Vu-YTn">
+                    <navigationBar key="navigationBar" clipsSubviews="YES" contentMode="scaleToFill" largeTitles="YES" id="uXu-Vu-YTn">
                         <rect key="frame" x="0.0" y="48" width="414" height="96.5"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" red="0.19517662109337028" green="0.27327967171717171" blue="0.057743974853747229" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>

@@ -9,10 +9,10 @@ import UIKit
 
 extension UIAlertController {
     
-    func showAlert(fromController: UIViewController) {
-        let alert = UIAlertController(title: "Empty input!", message: "write the word", preferredStyle: .alert)
+    func showAlert(from: UIViewController,_ title: String, _ message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default)
-        fromController.present(alert, animated: true, completion: nil)
+        from.present(alert, animated: true, completion: nil)
         alert.addAction(okAction)
     }
 }

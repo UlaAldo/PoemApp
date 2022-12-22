@@ -14,9 +14,11 @@ class SynonymViewController: UIViewController {
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet var spinner: UIActivityIndicatorView!
     
+    
 // MARK: - Private properties
     private var synonyms: [Synonym] = []
     private var word = ""
+    private let alert = UIAlertController()
     
 // MARK: - Life cycle methods
     override func viewDidLoad() {
@@ -24,7 +26,6 @@ class SynonymViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         searchTextField.delegate = self
-        tableView.layer.cornerRadius = 10
         tableView.isHidden = true
 
     }
@@ -37,28 +38,43 @@ class SynonymViewController: UIViewController {
     
 // MARK: - Private methods
     private func showSynonym() {
-        let alert = UIAlertController()
         word = searchTextField.text ?? ""
         if word.isEmpty {
-            alert.showAlert(fromController: self)
+            alert.showAlert(from: self, "Empty input", "Please, write the word")
         } else {
-            tableView.isHidden = false
             fetchSynonyms()
+
         }
     }
+    
     
     private func fetchSynonyms() {
         spinner.isHidden = false
         spinner.startAnimating()
-        NetworkManager.shared.fetchSynonym(word) { result in
-            switch result {
-            case .success(let synonyms):
-                self.synonyms = synonyms
-                self.tableView.reloadData()
-                self.spinner.stopAnimating()
-            case .failure(let error):
-                print(error)
+        DispatchQueue.global(qos: .userInitiated).async {
+            NetworkManager.shared.fetchSynonym(self.word) { result in
+                switch result {
+                case .success(let synonyms):
+                    self.synonyms = synonyms
+                    
+                case .failure(let error):
+                    print(error)
+                    
+                }
+                DispatchQueue.main.async {
+                    self.showResult()
+                }
             }
+        }
+    }
+    
+    private func showResult() {
+        spinner.stopAnimating()
+        if synonyms.isEmpty {
+            alert.showAlert(from: self, "Sorry", "Please, try another word")
+        } else {
+            tableView.isHidden = false
+            tableView.reloadData()
         }
     }
     
@@ -82,7 +98,6 @@ extension SynonymViewController: UITextFieldDelegate {
         if textField == searchTextField {
             synonyms = []
             tableView.isHidden = true
-            
         }
         return true
     }

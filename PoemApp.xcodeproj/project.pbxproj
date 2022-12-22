@@ -11,7 +11,6 @@
 		C13EF8392833841A007AE7B2 /* PoemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13EF8382833841A007AE7B2 /* PoemsViewController.swift */; };
 		C13EF83C28338484007AE7B2 /* WriterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13EF83B28338484007AE7B2 /* WriterViewController.swift */; };
 		C13EF83E283384C1007AE7B2 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13EF83D283384C1007AE7B2 /* StorageManager.swift */; };
-		C14BC8A72954ABDD00B25862 /* Spinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C14BC8A62954ABDD00B25862 /* Spinner.swift */; };
 		C156D8EE28688ECB00DB802E /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C156D8ED28688ECB00DB802E /* TabBarViewController.swift */; };
 		C166A9F62850E976001A8E14 /* PoemApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C166A9F42850E976001A8E14 /* PoemApp.xcdatamodeld */; };
 		C173C514287C26A80063BD8F /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C173C513287C26A80063BD8F /* AlertController.swift */; };
@@ -33,7 +32,6 @@
 		C13EF8382833841A007AE7B2 /* PoemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoemsViewController.swift; sourceTree = "<group>"; };
 		C13EF83B28338484007AE7B2 /* WriterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriterViewController.swift; sourceTree = "<group>"; };
 		C13EF83D283384C1007AE7B2 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
-		C14BC8A62954ABDD00B25862 /* Spinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spinner.swift; sourceTree = "<group>"; };
 		C156D8ED28688ECB00DB802E /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		C166A9F52850E976001A8E14 /* PoemApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PoemApp.xcdatamodel; sourceTree = "<group>"; };
 		C173C513287C26A80063BD8F /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
@@ -107,7 +105,6 @@
 			children = (
 				C13EF83D283384C1007AE7B2 /* StorageManager.swift */,
 				C1C9C1B7282D1CB8002AD499 /* NetworkManager.swift */,
-				C14BC8A62954ABDD00B25862 /* Spinner.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -290,7 +287,6 @@
 				C1C9C1A6282CF243002AD499 /* SynonymViewController.swift in Sources */,
 				C11696F8286AE5B4001699A4 /* PoemCell.swift in Sources */,
 				C166A9F62850E976001A8E14 /* PoemApp.xcdatamodeld in Sources */,
-				C14BC8A72954ABDD00B25862 /* Spinner.swift in Sources */,
 				C156D8EE28688ECB00DB802E /* TabBarViewController.swift in Sources */,
 				C173C514287C26A80063BD8F /* AlertController.swift in Sources */,
 				C1A3F7E9286C2FAE0016CFD7 /* RhymesViewController.swift in Sources */,
