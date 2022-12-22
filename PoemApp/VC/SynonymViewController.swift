@@ -30,6 +30,7 @@ class SynonymViewController: UIViewController {
     
 // MARK: - IB Actions
     @IBAction func showButton(_ sender: Any) {
+        self.view.endEditing(true)
         showSynonym()
     }
     

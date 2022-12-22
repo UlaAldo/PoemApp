@@ -17,6 +17,7 @@ class RhymesViewController: UIViewController {
 // MARK: - Private properties
     private var rhymes: [String] = []
     private var word = ""
+
     
 // MARK: - Life cycle methods
     override func viewDidLoad() {
@@ -27,10 +28,13 @@ class RhymesViewController: UIViewController {
         tableView.isHidden = true
     }
     
+    
 // MARK: - IB Actions
     @IBAction func showButton(_ sender: Any) {
-       showRhymes()
+        showRhymes()
+        self.view.endEditing(true)
     }
+    
     
 // MARK: - Private methods
     private func showRhymes() {
@@ -52,6 +56,7 @@ class RhymesViewController: UIViewController {
     }
 }
 
+
 // MARK: - extension: UITextFieldDelegate
     extension RhymesViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -68,7 +73,8 @@ class RhymesViewController: UIViewController {
         return true
     }
 }
-    
+   
+
     // MARK: - extension: UITAbleViewDataSource, UITableViewDelegate
     extension RhymesViewController: UITableViewDataSource {
         

@@ -26,13 +26,12 @@ class PoemsViewController: UIViewController {
         super.viewDidLoad()
         poems = StorageManager.shared.fetchData()
         setAppearance()
+
     }
     
 // MARK: - Private methods
     private func setAppearance() {
         poemsTableView.layer.cornerRadius = 10
-        poemsTableView.layer.cornerRadius = 10
-        newPoemButton.layer.cornerRadius = 10
         newPoemButton.layer.cornerRadius = 10
     }
 }
