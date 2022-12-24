@@ -19,6 +19,7 @@ class SynonymViewController: UIViewController {
     private var synonyms: [Synonym] = []
     private var word = ""
     private let alert = UIAlertController()
+    var splitSynonyms: [String] = []
     
 // MARK: - Life cycle methods
     override func viewDidLoad() {
@@ -28,6 +29,7 @@ class SynonymViewController: UIViewController {
         searchTextField.delegate = self
         tableView.isHidden = true
 
+       
     }
     
 // MARK: - IB Actions
@@ -56,7 +58,7 @@ class SynonymViewController: UIViewController {
                 switch result {
                 case .success(let synonyms):
                     self.synonyms = synonyms
-                    
+                    self.getSplitSynonyms()
                 case .failure(let error):
                     print(error)
                     
@@ -66,6 +68,12 @@ class SynonymViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    private func getSplitSynonyms() {
+        let synonyms = synonyms.map{$0.synonyms.components(separatedBy: [",", " "]).filter({!$0.isEmpty})}
+        let unique = synonyms.flatMap{$0}
+        splitSynonyms = Array(Set(unique))
     }
     
     private func showResult() {
@@ -109,19 +117,20 @@ extension SynonymViewController: UITextFieldDelegate {
 
 extension SynonymViewController: UITableViewDataSource {
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        synonyms.count
-    }
-    
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        synonyms[section].definition.firstUppercased
-        
-    }
+//    func numberOfSections(in tableView: UITableView) -> Int {
+//        synonyms.count
+//    }
+//
+//
+//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        synonyms[section].definition.firstUppercased
+//
+//    }
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        1
+        splitSynonyms.count
+        
     }
     
     
@@ -129,8 +138,8 @@ extension SynonymViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         var content = cell.defaultContentConfiguration()
         
-        let syn = synonyms[indexPath.section]
-        content.text = syn.synonyms.firstUppercased
+        let syn = splitSynonyms[indexPath.row]
+        content.text = syn.firstUppercased
         
         cell.contentConfiguration = content
         return cell
@@ -161,3 +170,14 @@ extension StringProtocol {
     var firstUppercased: String { return prefix(1).uppercased() + dropFirst() }
     
 }
+
+//extension Array where Element: Equatable {
+//    var unique: [Element] {
+//        var uniqueValues: [Element] = []
+//        forEach { item in
+//            guard !uniqueValues.contains(item) else { return }
+//            uniqueValues.append(item)
+//        }
+//        return uniqueValues
+//    }
+//}

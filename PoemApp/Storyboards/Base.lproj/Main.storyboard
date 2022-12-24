@@ -53,6 +53,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="tintColor" name="Text"/>
                                         </tableViewCellContentView>
+                                        <color key="tintColor" name="Text"/>
                                     </tableViewCell>
                                 </prototypes>
                                 <userDefinedRuntimeAttributes>
@@ -62,7 +63,7 @@
                                 </userDefinedRuntimeAttributes>
                             </tableView>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" id="Zu6-i4-Fhf">
-                                <rect key="frame" x="19.404908949032119" y="430.70308246248135" width="374.00000000006332" height="36.999999999993747"/>
+                                <rect key="frame" x="19.404908949034052" y="430.84095251695067" width="374.00000000012062" height="36.999999999993747"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="color" name="DarkGreen"/>
                             </activityIndicatorView>
@@ -136,6 +137,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="tintColor" name="Text"/>
                                         </tableViewCellContentView>
+                                        <color key="tintColor" name="Text"/>
                                     </tableViewCell>
                                 </prototypes>
                                 <sections/>
@@ -146,7 +148,7 @@
                                 </userDefinedRuntimeAttributes>
                             </tableView>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" id="yaz-Yv-6dc">
-                                <rect key="frame" x="20" y="429" width="374" height="36.999999999993634"/>
+                                <rect key="frame" x="19.999999999997726" y="430.30773579076242" width="373.99999999990496" height="36.999999999993634"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="color" name="DarkGreen"/>
                             </activityIndicatorView>
@@ -438,10 +440,10 @@
                         <color key="badgeColor" red="0.95556506360000004" green="0.83916704310000001" blue="0.70353635879999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" clipsSubviews="YES" contentMode="scaleToFill" largeTitles="YES" id="uXu-Vu-YTn">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="uXu-Vu-YTn">
                         <rect key="frame" x="0.0" y="48" width="414" height="96.5"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" red="0.19517662109337028" green="0.27327967171717171" blue="0.057743974853747229" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="tintColor" name="DarkGreen"/>
                         <textAttributes key="largeTitleTextAttributes">
                             <fontDescription key="fontDescription" name="Cochin-Bold" family="Cochin" pointSize="40"/>
                             <color key="textColor" red="0.19607843137254902" green="0.20000000000000001" blue="0.21568627450980393" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

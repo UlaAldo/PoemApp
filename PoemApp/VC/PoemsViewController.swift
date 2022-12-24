@@ -26,7 +26,15 @@ class PoemsViewController: UIViewController {
         super.viewDidLoad()
         poems = StorageManager.shared.fetchData()
         setAppearance()
-
+        
+        DispatchQueue.main.async { [weak self] in
+            self?.navigationController?.navigationBar.sizeToFit()
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+       
     }
     
 // MARK: - Private methods
@@ -80,13 +88,16 @@ extension PoemsViewController: UITableViewDelegate {
 extension PoemsViewController: UINavigationControllerDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let identifier = segue.identifier {
-            if identifier == "displayPoem" {
+            if segue.identifier == "displayPoem" {
                 let indexPath = poemsTableView.indexPathForSelectedRow!
                 let poem = poems[indexPath.row]
-                let displayNoteViewController = segue.destination as! WriterViewController
-                displayNoteViewController.poem = poem
+                let vc = segue.destination as! WriterViewController
+                vc.poem = poem
+                vc.status = poem.star
             }
+        if segue.identifier == "addPoem" {
+            let vc = segue.destination as! WriterViewController
+            vc.status = false
         }
     }
     

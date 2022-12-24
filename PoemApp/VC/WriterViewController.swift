@@ -15,7 +15,7 @@ class WriterViewController: UIViewController, UITextViewDelegate {
     @IBOutlet var mainTextView: UITextView!
     
     // MARK: - Public properties
-    var status: Bool = false
+    var status: Bool!
     var poem: Poem!
     
     // MARK: - Life cycle methods
@@ -79,7 +79,7 @@ class WriterViewController: UIViewController, UITextViewDelegate {
 extension WriterViewController: NSLayoutManagerDelegate {
     
     func layoutManager(_ layoutManager: NSLayoutManager, lineSpacingAfterGlyphAt glyphIndex: Int, withProposedLineFragmentRect rect: CGRect) -> CGFloat {
-        return 15
+        15
     }
 }
 
