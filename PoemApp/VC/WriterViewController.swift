@@ -38,11 +38,21 @@ class WriterViewController: UIViewController, UITextViewDelegate {
                 poem.headerPoem = headerTextField.text
                 poem.textPoem = mainTextView.text
                 poem.star = status
+                poem.date = setCurrentDate()
                 StorageManager.shared.savePoem()
             } else {
                 StorageManager.shared.delete(poem)
             }
         }
+    }
+    
+    func setCurrentDate() -> String {
+        let date = Date()
+        let df = DateFormatter()
+        df.dateFormat = "yyyy-MM-dd HH:mm:ss"  //"dd-MM-yyyy"
+        let dateString = df.string(from: date)
+        
+        return dateString
     }
     
     // MARK: - IB Actions
@@ -100,7 +110,7 @@ extension WriterViewController: UITextFieldDelegate {
             UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
             done
         ]
-        done.tintColor = UIColor(named: "DarkGreen")
+        done.tintColor = UIColor(named: "Orange")
         mainTextView.inputAccessoryView = toolbar
         headerTextField.inputAccessoryView = toolbar
     }
