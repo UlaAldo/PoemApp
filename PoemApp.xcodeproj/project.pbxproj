@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C11680012965CE3F00BB80CB /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11680002965CE3F00BB80CB /* Extension.swift */; };
 		C11696F8286AE5B4001699A4 /* PoemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11696F7286AE5B4001699A4 /* PoemCell.swift */; };
 		C13EF8392833841A007AE7B2 /* PoemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13EF8382833841A007AE7B2 /* PoemsViewController.swift */; };
 		C13EF83C28338484007AE7B2 /* WriterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13EF83B28338484007AE7B2 /* WriterViewController.swift */; };
@@ -23,11 +24,13 @@
 		C1C9C1AE282CF244002AD499 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1C9C1AC282CF244002AD499 /* LaunchScreen.storyboard */; };
 		C1C9C1B6282D18E7002AD499 /* Poem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C9C1B5282D18E7002AD499 /* Poem.swift */; };
 		C1C9C1B8282D1CB8002AD499 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C9C1B7282D1CB8002AD499 /* NetworkManager.swift */; };
+		C1E822EE29587A1A00590B7D /* ColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E822ED29587A1A00590B7D /* ColorCell.swift */; };
 		F3D11C4A0BDCF783F3C58FB6 /* Pods_PoemApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D96B107EF88AD3C739F1938 /* Pods_PoemApp.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		5D96B107EF88AD3C739F1938 /* Pods_PoemApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PoemApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C11680002965CE3F00BB80CB /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		C11696F7286AE5B4001699A4 /* PoemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoemCell.swift; sourceTree = "<group>"; };
 		C13EF8382833841A007AE7B2 /* PoemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoemsViewController.swift; sourceTree = "<group>"; };
 		C13EF83B28338484007AE7B2 /* WriterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriterViewController.swift; sourceTree = "<group>"; };
@@ -46,6 +49,7 @@
 		C1C9C1AF282CF244002AD499 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C1C9C1B5282D18E7002AD499 /* Poem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Poem.swift; sourceTree = "<group>"; };
 		C1C9C1B7282D1CB8002AD499 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		C1E822ED29587A1A00590B7D /* ColorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCell.swift; sourceTree = "<group>"; };
 		E33AE822F31E413EAB72DE18 /* Pods-PoemApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PoemApp.debug.xcconfig"; path = "Target Support Files/Pods-PoemApp/Pods-PoemApp.debug.xcconfig"; sourceTree = "<group>"; };
 		F2945D0580A3967841EE5265 /* Pods-PoemApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PoemApp.release.xcconfig"; path = "Target Support Files/Pods-PoemApp/Pods-PoemApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -76,6 +80,8 @@
 			children = (
 				C11696F7286AE5B4001699A4 /* PoemCell.swift */,
 				C173C513287C26A80063BD8F /* AlertController.swift */,
+				C1E822ED29587A1A00590B7D /* ColorCell.swift */,
+				C11680002965CE3F00BB80CB /* Extension.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -284,6 +290,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C11680012965CE3F00BB80CB /* Extension.swift in Sources */,
 				C1C9C1A6282CF243002AD499 /* SynonymViewController.swift in Sources */,
 				C11696F8286AE5B4001699A4 /* PoemCell.swift in Sources */,
 				C166A9F62850E976001A8E14 /* PoemApp.xcdatamodeld in Sources */,
@@ -293,6 +300,7 @@
 				C13EF83E283384C1007AE7B2 /* StorageManager.swift in Sources */,
 				C1C9C1B6282D18E7002AD499 /* Poem.swift in Sources */,
 				C13EF83C28338484007AE7B2 /* WriterViewController.swift in Sources */,
+				C1E822EE29587A1A00590B7D /* ColorCell.swift in Sources */,
 				C1C9C1B8282D1CB8002AD499 /* NetworkManager.swift in Sources */,
 				C1C9C1A2282CF243002AD499 /* AppDelegate.swift in Sources */,
 				C1C9C1A4282CF243002AD499 /* SceneDelegate.swift in Sources */,

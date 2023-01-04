@@ -12,10 +12,13 @@ class PoemCell: UITableViewCell {
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var secondLabel: UILabel!
     @IBOutlet var starImage: UIImageView!
+    @IBOutlet var dateLabel: UILabel!
+    
     
     func configure(with poem: Poem) {
         titleLabel.text = poem.headerPoem
         secondLabel.text = poem.textPoem
+        dateLabel.text = poem.date
         
         if poem.star {
             starImage.image = UIImage(systemName: "star.fill")
@@ -23,7 +26,9 @@ class PoemCell: UITableViewCell {
         } else {
             starImage.image = nil
         }
+
     }
-    
+   
+
 }
 
