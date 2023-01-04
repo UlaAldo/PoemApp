@@ -14,6 +14,9 @@ class PoemsViewController: UIViewController {
     @IBOutlet var poemsTableView: UITableView!
     @IBOutlet var newPoemButton: UIButton!
     
+    @IBOutlet var startLabel: UILabel!
+    
+    
 // MARK: - Public properties
     var poems = [Poem](){
         didSet {
@@ -26,23 +29,31 @@ class PoemsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         poems = StorageManager.shared.fetchData()
-//        po = poems.filter{$0.star == true} + poems.filter{$0.star == false}
         setAppearance()
         
-        DispatchQueue.main.async { [weak self] in
-            self?.navigationController?.navigationBar.sizeToFit()
-        }
+//        po = poems.filter{$0.star == true} + poems.filter{$0.star == false}
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
+        setStartLabel()
     }
     
 // MARK: - Private methods
     private func setAppearance() {
         poemsTableView.layer.borderWidth = 0.5
         poemsTableView.layer.borderColor = UIColor(named: "DarkGreen")?.cgColor
+    }
+    
+    private func setStartLabel() {
+        if poems.isEmpty {
+            startLabel.isHidden = false
+            startLabel.animate(newText: "This is the place for your inspiration", characterDelay: 0.1)
+        } else {
+            startLabel.isHidden = true
+        }
     }
 }
 
@@ -81,8 +92,8 @@ extension PoemsViewController: UITableViewDelegate {
         
         if editingStyle == .delete {
             StorageManager.shared.delete(poem)
-            print("DELETE")
             poems = StorageManager.shared.fetchData()
+            setStartLabel()
         }
     }
 }
@@ -108,3 +119,7 @@ extension PoemsViewController: UINavigationControllerDelegate {
         self.poems = StorageManager.shared.fetchData()
     }
 }
+
+
+
+
