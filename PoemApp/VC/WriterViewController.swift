@@ -22,16 +22,18 @@ class WriterViewController: UIViewController, UITextViewDelegate {
     var centerCell: ColorCell!
     var colors: [UIColor] = []
     
-    let one = UIColor(red: 240, green: 232, blue: 205, alpha: 1)
-    let two = UIColor(red: 0.969, green: 1, blue: 0, alpha: 1)
-    let three = UIColor(red: 1, green: 0.294, blue: 0.122, alpha: 1)
-    let four = UIColor(red: 0.122, green: 0.867, blue: 1, alpha: 1)
-    let five = UIColor(red: 0.122, green: 0.867, blue: 1, alpha: 1)
-    let six = UIColor(red: 0.122, green: 0.867, blue: 1, alpha: 1)
-    let seven = UIColor(red: 0.122, green: 0.867, blue: 1, alpha: 1)
-    let eight = UIColor(red: 0.122, green: 0.867, blue: 1, alpha: 1)
-    let nine = UIColor(red: 0.122, green: 0.867, blue: 1, alpha: 1)
-    let ten = UIColor(red: 0.122, green: 0.867, blue: 1, alpha: 1)
+    // MARK: - Private properties
+    private let one = UIColor(named: "one")!
+    private let two = UIColor(named: "two")!
+    private let three = UIColor(named: "three")!
+    private let four = UIColor(named: "four")!
+    private let five = UIColor(named: "five")!
+    private let six = UIColor(named: "six")!
+    private let seven = UIColor(named: "seven")!
+    private let eight = UIColor(named: "eight")!
+    private let nine = UIColor(named: "nine")!
+    private let ten = UIColor(named: "ten")!
+    private let eleven = UIColor(named: "1")!
     
     
     // MARK: - Life cycle methods
@@ -40,8 +42,12 @@ class WriterViewController: UIViewController, UITextViewDelegate {
         setDesign()
         setToolbar()
         setCollectionView()
-        colors = [one, two, three, four, five, six, seven, eight, nine, ten]
+        colors = [one, two, three, four, five, six, seven, eight, nine, ten, eleven]
         self.tabBarController?.tabBar.isHidden = true
+        
+        mainTextView.scrollRangeToVisible(NSRange(..<mainTextView.text.endIndex, in: mainTextView.text))
+
+     
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -78,7 +84,7 @@ class WriterViewController: UIViewController, UITextViewDelegate {
     
     // MARK: - Private methods
     private func setStatusForStarButton(_ color: Bool) {
-        starButton.tintColor = color ? UIColor(named: "Orange") : .systemGray3
+        starButton.tintColor = color ? UIColor(named: "Orange") : .white
     }
     
     private func setLastPoem() {
@@ -222,6 +228,7 @@ extension WriterViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let color = colors[indexPath.item]
         mainTextView.backgroundColor = color
+        headerTextField.backgroundColor = color
         
         colorsCollection.scrollToItem(at: IndexPath(item: indexPath.item, section: 0), at: .centeredHorizontally, animated: true)
     }

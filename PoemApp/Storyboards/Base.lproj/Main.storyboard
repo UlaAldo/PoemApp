@@ -24,11 +24,12 @@
                                 <color key="tintColor" name="Text"/>
                                 <color key="textColor" name="Text"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" returnKeyType="done"/>
                             </textField>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KPH-iT-BH3">
                                 <rect key="frame" x="100" y="238.5" width="214" height="34"/>
                                 <color key="backgroundColor" name="Orange"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Show"/>
@@ -108,11 +109,12 @@
                                 <color key="tintColor" name="Text"/>
                                 <color key="textColor" name="Text"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" returnKeyType="done"/>
                             </textField>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fEL-Ix-VCZ">
                                 <rect key="frame" x="100" y="238.5" width="214" height="34"/>
                                 <color key="backgroundColor" name="Orange"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Show"/>
@@ -181,7 +183,7 @@
             </objects>
             <point key="canvasLocation" x="1883" y="866"/>
         </scene>
-        <!--Poems-->
+        <!--Poems View Controller-->
         <scene sceneID="lkj-74-kfo">
             <objects>
                 <viewController id="obq-9Q-na5" customClass="PoemsViewController" customModule="PoemApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -258,18 +260,17 @@
                                     <outlet property="delegate" destination="obq-9Q-na5" id="v2B-OX-eI2"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2tA-md-T7B">
-                                <rect key="frame" x="273.5" y="92" width="120.5" height="44"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2tA-md-T7B">
+                                <rect key="frame" x="274" y="92" width="120" height="44"/>
                                 <color key="backgroundColor" name="Orange"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="U4Q-QK-yAP"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="VhK-pb-AUx"/>
+                                    <constraint firstAttribute="width" constant="120" id="l1W-h4-p6p"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="+ New poem">
-                                    <fontDescription key="titleFontDescription" type="system" pointSize="17"/>
-                                </buttonConfiguration>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="+ New poem"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="10"/>
@@ -292,7 +293,7 @@
                             <constraint firstItem="oHC-4Y-zbs" firstAttribute="leading" secondItem="DyD-p7-1gr" secondAttribute="leading" constant="20" id="x6p-fk-3WB"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Poems" id="tGi-5a-eUl"/>
+                    <navigationItem key="navigationItem" id="tGi-5a-eUl"/>
                     <connections>
                         <outlet property="newPoemButton" destination="2tA-md-T7B" id="Ewd-4W-qOc"/>
                         <outlet property="poemsTableView" destination="oHC-4Y-zbs" id="Q4k-wK-yeP"/>
@@ -311,12 +312,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SLb-h8-X11">
-                                <rect key="frame" x="175.5" y="124.5" width="63" height="60"/>
+                                <rect key="frame" x="175.5" y="82" width="63" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="3vc-3z-81y"/>
                                     <constraint firstAttribute="width" constant="63" id="7En-tT-5Te"/>
                                 </constraints>
-                                <color key="tintColor" systemColor="systemGray3Color"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" image="star.fill" catalog="system"/>
                                 <buttonConfiguration key="configuration" style="plain" image="star.fill" catalog="system">
@@ -326,14 +327,13 @@
                                     <action selector="pushedStarButton:" destination="DoV-LX-xUN" eventType="touchUpInside" id="l2n-Y4-KBp"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="name of poem..." textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="QCD-DR-lR1">
-                                <rect key="frame" x="20" y="184.5" width="374" height="34"/>
-                                <color key="textColor" name="Text"/>
+                            <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="251" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="title" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="QCD-DR-lR1">
+                                <rect key="frame" x="20" y="142" width="374" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="QX2-i0-NEW">
-                                <rect key="frame" x="20" y="238.5" width="374" height="413.5"/>
+                                <rect key="frame" x="20" y="196" width="374" height="456"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="textColor" name="Text"/>
                                 <fontDescription key="fontDescription" type="italicSystem" pointSize="15"/>
@@ -345,7 +345,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Bet-tz-wD9" secondAttribute="height" multiplier="99:31" id="Iyy-Yd-0Kj"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Save"/>
@@ -394,7 +394,7 @@
                             </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="NEX-Dh-LbA"/>
-                        <color key="backgroundColor" red="0.90980392160000001" green="0.90980392160000001" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.50588238240000005" green="0.56862747670000002" blue="0.55686277149999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="Bet-tz-wD9" firstAttribute="top" secondItem="qgY-0J-aRV" secondAttribute="bottom" constant="8" symbolic="YES" id="4ut-hh-ZQi"/>
                             <constraint firstItem="NEX-Dh-LbA" firstAttribute="trailing" secondItem="QCD-DR-lR1" secondAttribute="trailing" constant="20" id="5d1-Wo-eA4"/>
@@ -402,7 +402,7 @@
                             <constraint firstItem="QCD-DR-lR1" firstAttribute="leading" secondItem="NEX-Dh-LbA" secondAttribute="leading" constant="20" id="Ixm-Hf-6ba"/>
                             <constraint firstItem="NEX-Dh-LbA" firstAttribute="trailing" secondItem="qgY-0J-aRV" secondAttribute="trailing" id="MU4-ib-V1H"/>
                             <constraint firstItem="qgY-0J-aRV" firstAttribute="top" secondItem="QX2-i0-NEW" secondAttribute="bottom" constant="20" id="O6m-nU-T86"/>
-                            <constraint firstItem="SLb-h8-X11" firstAttribute="top" secondItem="NEX-Dh-LbA" secondAttribute="top" constant="-20" id="O87-xS-dhW"/>
+                            <constraint firstItem="SLb-h8-X11" firstAttribute="top" secondItem="NEX-Dh-LbA" secondAttribute="top" constant="-10" id="O87-xS-dhW"/>
                             <constraint firstItem="qgY-0J-aRV" firstAttribute="leading" secondItem="NEX-Dh-LbA" secondAttribute="leading" id="R9d-F0-hb9"/>
                             <constraint firstItem="QX2-i0-NEW" firstAttribute="leading" secondItem="NEX-Dh-LbA" secondAttribute="leading" constant="20" id="Su1-wo-ULz"/>
                             <constraint firstItem="Bet-tz-wD9" firstAttribute="centerX" secondItem="pfX-Ld-6jO" secondAttribute="centerX" id="ULA-8i-n54"/>
@@ -412,7 +412,7 @@
                             <constraint firstItem="NEX-Dh-LbA" firstAttribute="trailing" secondItem="QX2-i0-NEW" secondAttribute="trailing" constant="20" id="wa3-ml-7md"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="YZK-aj-hF3"/>
+                    <navigationItem key="navigationItem" style="editor" id="YZK-aj-hF3"/>
                     <connections>
                         <outlet property="colorsCollection" destination="qgY-0J-aRV" id="coS-hu-8Gv"/>
                         <outlet property="headerTextField" destination="QCD-DR-lR1" id="hyj-QI-Y17"/>
@@ -485,10 +485,10 @@
                         <color key="badgeColor" red="0.95556506360000004" green="0.83916704310000001" blue="0.70353635879999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="uXu-Vu-YTn">
-                        <rect key="frame" x="0.0" y="48" width="414" height="96.5"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="uXu-Vu-YTn">
+                        <rect key="frame" x="0.0" y="48" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" name="DarkGreen"/>
+                        <color key="tintColor" name="Back"/>
                         <textAttributes key="largeTitleTextAttributes">
                             <fontDescription key="fontDescription" name="Cochin-Bold" family="Cochin" pointSize="40"/>
                             <color key="textColor" red="0.19607843137254902" green="0.20000000000000001" blue="0.21568627450980393" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -536,23 +536,23 @@
         <image name="star.bubble" catalog="system" width="128" height="110"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
         <image name="star.square.fill" catalog="system" width="128" height="114"/>
+        <namedColor name="Back">
+            <color red="0.9100000262260437" green="0.9100000262260437" blue="0.87099999189376831" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="DGrey">
             <color red="0.32899999618530273" green="0.32400000095367432" blue="0.4779999852180481" alpha="0.33000001311302185" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="DarkGreen">
-            <color red="0.49019607843137253" green="0.56862745098039214" blue="0.55686274509803924" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.49000000953674316" green="0.5690000057220459" blue="0.55699998140335083" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Orange">
-            <color red="0.95294117647058818" green="0.61176470588235299" blue="0.45490196078431372" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.95300000905990601" green="0.6119999885559082" blue="0.45500001311302185" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Text">
-            <color red="0.19607843137254902" green="0.20000000000000001" blue="0.21568627450980393" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.19599999487400055" green="0.20000000298023224" blue="0.21600000560283661" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGray3Color">
-            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

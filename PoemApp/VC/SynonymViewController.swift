@@ -97,6 +97,7 @@ extension SynonymViewController: UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        showSynonym()
         searchTextField.resignFirstResponder()
         return true
     }
@@ -116,17 +117,6 @@ extension SynonymViewController: UITextFieldDelegate {
 // MARK: - extension: UITAbleViewDataSource
 
 extension SynonymViewController: UITableViewDataSource {
-    
-//    func numberOfSections(in tableView: UITableView) -> Int {
-//        synonyms.count
-//    }
-//
-//
-//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        synonyms[section].definition.firstUppercased
-//
-//    }
-    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         splitSynonyms.count

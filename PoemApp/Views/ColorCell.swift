@@ -12,8 +12,8 @@ class ColorCell: UICollectionViewCell {
     func transformToLarge ( ) {
         UIView.animate (withDuration: 0.2) {
             self.transform = CGAffineTransform(scaleX: 1.7, y: 1.7)
-            self.layer.borderColor = UIColor.white.cgColor
-            self.layer.borderWidth = 1.5
+            self.layer.borderColor = UIColor(named: "Orange")!.cgColor
+            self.layer.borderWidth = 1.3
         }
         let generator = UIImpactFeedbackGenerator (style: .light)
         generator.impactOccurred()

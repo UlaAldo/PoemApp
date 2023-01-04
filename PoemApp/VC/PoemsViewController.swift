@@ -15,16 +15,18 @@ class PoemsViewController: UIViewController {
     @IBOutlet var newPoemButton: UIButton!
     
 // MARK: - Public properties
-    var poems = [Poem]() {
+    var poems = [Poem](){
         didSet {
             poemsTableView.reloadData()
         }
     }
     
+    
 // MARK: - Life cycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
         poems = StorageManager.shared.fetchData()
+//        po = poems.filter{$0.star == true} + poems.filter{$0.star == false}
         setAppearance()
         
         DispatchQueue.main.async { [weak self] in
@@ -79,6 +81,7 @@ extension PoemsViewController: UITableViewDelegate {
         
         if editingStyle == .delete {
             StorageManager.shared.delete(poem)
+            print("DELETE")
             poems = StorageManager.shared.fetchData()
         }
     }
