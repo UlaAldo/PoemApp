@@ -30,6 +30,9 @@ class TabBarViewController: UITabBarController {
         appearance.stackedLayoutAppearance.selected.titleTextAttributes = [NSAttributedString.Key.foregroundColor:
                                                                             UIColor.white
         ]
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = .clear
+        appearance.shadowColor = .clear
         
         self.tabBar.standardAppearance = appearance
     

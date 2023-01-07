@@ -13,7 +13,6 @@ class PoemsViewController: UIViewController {
 // MARK: - IB Outlets
     @IBOutlet var poemsTableView: UITableView!
     @IBOutlet var newPoemButton: UIButton!
-    
     @IBOutlet var startLabel: UILabel!
     
     @IBOutlet var popUpButton: UIButton!
@@ -31,11 +30,9 @@ class PoemsViewController: UIViewController {
         super.viewDidLoad()
         poems = StorageManager.shared.fetchData()
         setAppearance()
-        
+        setNavBar()
 //        po = poems.filter{$0.star == true} + poems.filter{$0.star == false}
-        
-        setMenuFilter()
-        
+
     }
     
     
@@ -43,6 +40,8 @@ class PoemsViewController: UIViewController {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
         poems = StorageManager.shared.fetchData()
+        popUpButton.tintColor = UIColor(named: "DarkGreen")
+        setMenuFilter()
         setStartLabel()
     }
     
@@ -56,19 +55,25 @@ class PoemsViewController: UIViewController {
             popUpButton.menu = UIMenu(children: [
                 UIAction(title: "no filter", state: .on, handler:
                                         menuClosure),
-                    UIAction(title: "star poems",state: .off, handler: menuClosure),
+                UIAction(title: "star poems" ,state: .off, handler: menuClosure),
                     UIAction(title: "option 3",state: .off, handler: menuClosure),
                 ])
             popUpButton.showsMenuAsPrimaryAction = true
-    
+        
+        
     }
     
    private func update(number:String) {
         if number == "no filter" {
+            popUpButton.tintColor = UIColor(named: "DarkGreen")
             poems = StorageManager.shared.fetchData()
         }
         if number == "star poems" {
             poems = poems.filter{$0.star == true}
+            popUpButton.tintColor = UIColor(named: "Orange")
+//            popUpButton.layer.borderColor = UIColor(named: "Orange")?.cgColor
+//            popUpButton.layer.borderWidth = 1
+            
         }
         if number == "option 3" {
             poems = poems.sorted(by: {$0.date! < $1.date!})
@@ -77,6 +82,15 @@ class PoemsViewController: UIViewController {
     
     
 // MARK: - Private methods
+    private func setNavBar() {
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = .clear
+        appearance.shadowColor = .clear
+        navigationController?.navigationBar.standardAppearance = appearance
+        navigationController?.navigationBar.scrollEdgeAppearance = appearance
+    }
+    
     private func setAppearance() {
         poemsTableView.layer.borderWidth = 0.5
         poemsTableView.layer.borderColor = UIColor(named: "DarkGreen")?.cgColor
