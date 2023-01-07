@@ -18,7 +18,7 @@ class PoemCell: UITableViewCell {
     func configure(with poem: Poem) {
         titleLabel.text = poem.headerPoem
         secondLabel.text = poem.textPoem
-        dateLabel.text = poem.date
+        dateLabel.text = setCurrentDate(date: poem.date ?? Date().format())
         
         if poem.star {
             starImage.image = UIImage(systemName: "star.fill")
@@ -27,6 +27,14 @@ class PoemCell: UITableViewCell {
             starImage.image = nil
         }
 
+    }
+    
+    private func setCurrentDate(date: Date) -> String {
+        let df = DateFormatter()
+        df.dateFormat = "dd-MM-yyyy   HH:mm"
+        let dateString = df.string(from: date)
+        
+        return dateString
     }
    
 

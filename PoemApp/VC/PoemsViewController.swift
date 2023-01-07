@@ -31,7 +31,6 @@ class PoemsViewController: UIViewController {
         poems = StorageManager.shared.fetchData()
         setAppearance()
         setNavBar()
-//        po = poems.filter{$0.star == true} + poems.filter{$0.star == false}
 
     }
     
@@ -41,43 +40,48 @@ class PoemsViewController: UIViewController {
         self.tabBarController?.tabBar.isHidden = false
         poems = StorageManager.shared.fetchData()
         popUpButton.tintColor = UIColor(named: "DarkGreen")
-        setMenuFilter()
+        setMenuButtonFilter()
         setStartLabel()
+        
     }
     
-// MARK: - Filter methods
+// MARK: - Filter methods for Button
     
-    private func setMenuFilter() {
+    private func setMenuButtonFilter() {
         let menuClosure = {(action: UIAction) in
-                self.update(number: action.title)
-            }
+            self.update(filter: action.title)
+        }
         
-            popUpButton.menu = UIMenu(children: [
-                UIAction(title: "no filter", state: .on, handler:
-                                        menuClosure),
-                UIAction(title: "star poems" ,state: .off, handler: menuClosure),
-                    UIAction(title: "option 3",state: .off, handler: menuClosure),
-                ])
-            popUpButton.showsMenuAsPrimaryAction = true
-        
-        
+        popUpButton.menu = UIMenu(children: [
+            UIAction(title: "no filter", state: .on, handler:
+                        menuClosure),
+            UIAction(title: "star poems" ,state: .off, handler: menuClosure),
+            UIAction(title: "new first",state: .off, handler: menuClosure),
+            UIAction(title: "old first",state: .off, handler: menuClosure)
+        ])
+        popUpButton.showsMenuAsPrimaryAction = true
+          
     }
     
-   private func update(number:String) {
-        if number == "no filter" {
-            popUpButton.tintColor = UIColor(named: "DarkGreen")
-            poems = StorageManager.shared.fetchData()
-        }
-        if number == "star poems" {
-            poems = poems.filter{$0.star == true}
-            popUpButton.tintColor = UIColor(named: "Orange")
-//            popUpButton.layer.borderColor = UIColor(named: "Orange")?.cgColor
-//            popUpButton.layer.borderWidth = 1
-            
-        }
-        if number == "option 3" {
-            poems = poems.sorted(by: {$0.date! < $1.date!})
-        }
+    
+   private func update(filter:String) {
+       switch filter{
+       case "no filter":
+           popUpButton.tintColor = UIColor(named: "DarkGreen")
+           poems = StorageManager.shared.fetchData()
+       case "star poems":
+           poems = poems.filter{$0.star == true}
+           popUpButton.tintColor = UIColor(named: "Orange")
+       case "new first":
+           poems = StorageManager.shared.fetchData()
+           poems = poems.sorted(by: {$0.date! > $1.date!})
+           popUpButton.tintColor = UIColor(named: "Orange")
+       default:
+           poems = StorageManager.shared.fetchData()
+           poems = poems.sorted(by: {$0.date! < $1.date!})
+           popUpButton.tintColor = UIColor(named: "Orange")
+       }
+       
     }
     
     

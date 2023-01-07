@@ -67,7 +67,9 @@ class WriterViewController: UIViewController, UITextViewDelegate {
                 poem.headerPoem = headerTextField.text
                 poem.textPoem = mainTextView.text
                 poem.star = status
-                poem.date = setCurrentDate()
+//                let date = Date()
+                poem.date = Date().format()
+                
                 StorageManager.shared.savePoem()
             } else {
                 StorageManager.shared.delete(poem)
@@ -130,6 +132,9 @@ class WriterViewController: UIViewController, UITextViewDelegate {
         
         return dateString
     }
+    
+
+     
     
     // MARK: - Collection View Settings
     private func setCollectionView() {
@@ -250,6 +255,5 @@ extension WriterViewController: UICollectionViewDelegate {
         colorsCollection.scrollToItem(at: IndexPath(item: indexPath.item, section: 0), at: .centeredHorizontally, animated: true)
     }
 }
-
 
 

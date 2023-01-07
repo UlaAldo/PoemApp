@@ -11,7 +11,21 @@ class TabBarViewController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setColorsIcon()
+    }
+    
+    override func viewWillLayoutSubviews() {
+            super.viewWillLayoutSubviews()
+
+            self.tabBar.layer.masksToBounds = true
+            self.tabBar.isTranslucent = true
+            self.tabBar.barStyle = .default
+            self.tabBar.layer.cornerRadius = 20
+            self.tabBar.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+
+        }
+    
+    private func setColorsIcon() {
         let appearance = UITabBarAppearance()
         
         appearance.stackedLayoutAppearance.normal.iconColor = UIColor(red: 156/255,
