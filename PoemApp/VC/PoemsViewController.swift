@@ -16,6 +16,7 @@ class PoemsViewController: UIViewController {
     
     @IBOutlet var startLabel: UILabel!
     
+    @IBOutlet var popUpButton: UIButton!
     
 // MARK: - Public properties
     var poems = [Poem](){
@@ -33,13 +34,47 @@ class PoemsViewController: UIViewController {
         
 //        po = poems.filter{$0.star == true} + poems.filter{$0.star == false}
         
+        setMenuFilter()
+        
     }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
+        poems = StorageManager.shared.fetchData()
         setStartLabel()
     }
+    
+// MARK: - Filter methods
+    
+    private func setMenuFilter() {
+        let menuClosure = {(action: UIAction) in
+                self.update(number: action.title)
+            }
+        
+            popUpButton.menu = UIMenu(children: [
+                UIAction(title: "no filter", state: .on, handler:
+                                        menuClosure),
+                    UIAction(title: "star poems",state: .off, handler: menuClosure),
+                    UIAction(title: "option 3",state: .off, handler: menuClosure),
+                ])
+            popUpButton.showsMenuAsPrimaryAction = true
+    
+    }
+    
+   private func update(number:String) {
+        if number == "no filter" {
+            poems = StorageManager.shared.fetchData()
+        }
+        if number == "star poems" {
+            poems = poems.filter{$0.star == true}
+        }
+        if number == "option 3" {
+            poems = poems.sorted(by: {$0.date! < $1.date!})
+        }
+    }
+    
     
 // MARK: - Private methods
     private func setAppearance() {
@@ -51,8 +86,10 @@ class PoemsViewController: UIViewController {
         if poems.isEmpty {
             startLabel.isHidden = false
             startLabel.animate(newText: "This is the place for your inspiration", characterDelay: 0.1)
+            popUpButton.isHidden = true
         } else {
             startLabel.isHidden = true
+            popUpButton.isHidden = false
         }
     }
 }
@@ -108,10 +145,14 @@ extension PoemsViewController: UINavigationControllerDelegate {
                 let vc = segue.destination as! WriterViewController
                 vc.poem = poem
                 vc.status = poem.star
+                vc.deleteButton.tintColor = .white
+                
             }
         if segue.identifier == "addPoem" {
             let vc = segue.destination as! WriterViewController
             vc.status = false
+            vc.deleteButton.tintColor = UIColor(named: "DarkGreen")
+            vc.deleteButton.isEnabled = false
         }
     }
     

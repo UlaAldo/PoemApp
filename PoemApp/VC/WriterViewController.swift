@@ -15,6 +15,7 @@ class WriterViewController: UIViewController, UITextViewDelegate {
     @IBOutlet var mainTextView: UITextView!
     @IBOutlet var colorsCollection: UICollectionView!
     
+    @IBOutlet var deleteButton: UIBarButtonItem!
     
     // MARK: - Public properties
     var status: Bool!
@@ -80,6 +81,22 @@ class WriterViewController: UIViewController, UITextViewDelegate {
     @IBAction func pushedStarButton(_ sender: Any) {
         status.toggle()
         setStatusForStarButton(status)
+    }
+    
+    
+    @IBAction func deletedPoem(_ sender: Any) {
+        let deletedAlert = UIAlertController(title: "Delete", message: "Are you sure you want to delete this poem?", preferredStyle: UIAlertController.Style.alert)
+        
+        deletedAlert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action: UIAlertAction!) in
+            StorageManager.shared.delete(self.poem)
+            self.navigationController?.popToRootViewController(animated: true)
+        }))
+        
+        deletedAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+            print("Handle Cancel")
+        }))
+        
+        present(deletedAlert, animated: true, completion: nil)
     }
     
     // MARK: - Private methods

@@ -7,6 +7,7 @@
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="UIMenu" message="Requires Xcode 11 or later." minToolsVersion="11.0" requiredIntegratedClassName="UICommandDiff"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -192,7 +193,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" rowHeight="85" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="oHC-4Y-zbs">
-                                <rect key="frame" x="20" y="176" width="374" height="617"/>
+                                <rect key="frame" x="20" y="196" width="374" height="597"/>
                                 <color key="separatorColor" red="0.62352943419999995" green="0.66666668650000005" blue="0.62745100259999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <inset key="separatorInset" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
                                 <prototypes>
@@ -261,7 +262,7 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2tA-md-T7B">
-                                <rect key="frame" x="274" y="112" width="120" height="44"/>
+                                <rect key="frame" x="274" y="132" width="120" height="44"/>
                                 <color key="backgroundColor" name="Orange"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="U4Q-QK-yAP"/>
@@ -292,6 +293,18 @@
                                 <color key="textColor" name="Orange"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NRJ-eu-SLO">
+                                <rect key="frame" x="20" y="149" width="104" height="34"/>
+                                <menu key="menu" id="j57-8h-126">
+                                    <children>
+                                        <command title="sort" id="mHS-sO-F2j"/>
+                                        <command title="date" id="Kh5-f0-dbL"/>
+                                    </children>
+                                </menu>
+                                <buttonConfiguration key="configuration" style="plain" image="rectangle.and.pencil.and.ellipsis.rtl" catalog="system">
+                                    <color key="baseForegroundColor" name="DarkGreen"/>
+                                </buttonConfiguration>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="DyD-p7-1gr"/>
                         <color key="backgroundColor" red="0.90980392160000001" green="0.90980392160000001" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -300,8 +313,10 @@
                             <constraint firstItem="Ydx-6N-XVe" firstAttribute="centerY" secondItem="dGi-Co-DqP" secondAttribute="centerY" id="2GX-XT-ybi"/>
                             <constraint firstItem="DyD-p7-1gr" firstAttribute="trailing" secondItem="Ydx-6N-XVe" secondAttribute="trailing" constant="60" id="4Bv-iB-aij"/>
                             <constraint firstItem="DyD-p7-1gr" firstAttribute="trailing" secondItem="oHC-4Y-zbs" secondAttribute="trailing" constant="20" id="5gV-v3-bKS"/>
+                            <constraint firstItem="NRJ-eu-SLO" firstAttribute="top" secondItem="fsN-zN-qeQ" secondAttribute="bottom" constant="10" id="ILO-Yc-ysc"/>
+                            <constraint firstItem="NRJ-eu-SLO" firstAttribute="leading" secondItem="DyD-p7-1gr" secondAttribute="leading" constant="20" id="Jdd-z4-BeX"/>
                             <constraint firstItem="fsN-zN-qeQ" firstAttribute="top" secondItem="DyD-p7-1gr" secondAttribute="top" id="Myt-xI-Ome"/>
-                            <constraint firstItem="2tA-md-T7B" firstAttribute="top" secondItem="DyD-p7-1gr" secondAttribute="top" constant="20" id="Qet-h4-GRa"/>
+                            <constraint firstItem="2tA-md-T7B" firstAttribute="top" secondItem="DyD-p7-1gr" secondAttribute="top" constant="40" id="Qet-h4-GRa"/>
                             <constraint firstItem="DyD-p7-1gr" firstAttribute="bottom" secondItem="oHC-4Y-zbs" secondAttribute="bottom" constant="20" id="atB-fp-LYu"/>
                             <constraint firstItem="fsN-zN-qeQ" firstAttribute="leading" secondItem="DyD-p7-1gr" secondAttribute="leading" constant="20" id="dRY-aY-TfL"/>
                             <constraint firstItem="oHC-4Y-zbs" firstAttribute="top" secondItem="2tA-md-T7B" secondAttribute="bottom" constant="20" id="nRh-R7-bZY"/>
@@ -314,6 +329,7 @@
                     <connections>
                         <outlet property="newPoemButton" destination="2tA-md-T7B" id="Ewd-4W-qOc"/>
                         <outlet property="poemsTableView" destination="oHC-4Y-zbs" id="Q4k-wK-yeP"/>
+                        <outlet property="popUpButton" destination="NRJ-eu-SLO" id="HSa-Nc-Z9F"/>
                         <outlet property="startLabel" destination="Ydx-6N-XVe" id="jTi-MY-Kis"/>
                     </connections>
                 </viewController>
@@ -351,7 +367,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="QX2-i0-NEW">
-                                <rect key="frame" x="20" y="196" width="374" height="456"/>
+                                <rect key="frame" x="20" y="196" width="374" height="431"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="textColor" name="Text"/>
                                 <fontDescription key="fontDescription" type="italicSystem" pointSize="15"/>
@@ -410,29 +426,45 @@
                                     <outlet property="delegate" destination="DoV-LX-xUN" id="byQ-zs-cpL"/>
                                 </connections>
                             </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="choose the color of your inspiration" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wRj-il-Ipw">
+                                <rect key="frame" x="20" y="647" width="374" height="20"/>
+                                <fontDescription key="fontDescription" name="Cochin" family="Cochin" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="NEX-Dh-LbA"/>
-                        <color key="backgroundColor" red="0.50588238240000005" green="0.56862747670000002" blue="0.55686277149999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" name="DarkGreen"/>
                         <constraints>
                             <constraint firstItem="Bet-tz-wD9" firstAttribute="top" secondItem="qgY-0J-aRV" secondAttribute="bottom" constant="8" symbolic="YES" id="4ut-hh-ZQi"/>
                             <constraint firstItem="NEX-Dh-LbA" firstAttribute="trailing" secondItem="QCD-DR-lR1" secondAttribute="trailing" constant="20" id="5d1-Wo-eA4"/>
                             <constraint firstItem="SLb-h8-X11" firstAttribute="centerX" secondItem="pfX-Ld-6jO" secondAttribute="centerX" id="73o-Kb-0TM"/>
                             <constraint firstItem="QCD-DR-lR1" firstAttribute="leading" secondItem="NEX-Dh-LbA" secondAttribute="leading" constant="20" id="Ixm-Hf-6ba"/>
                             <constraint firstItem="NEX-Dh-LbA" firstAttribute="trailing" secondItem="qgY-0J-aRV" secondAttribute="trailing" id="MU4-ib-V1H"/>
-                            <constraint firstItem="qgY-0J-aRV" firstAttribute="top" secondItem="QX2-i0-NEW" secondAttribute="bottom" constant="20" id="O6m-nU-T86"/>
                             <constraint firstItem="SLb-h8-X11" firstAttribute="top" secondItem="NEX-Dh-LbA" secondAttribute="top" constant="-10" id="O87-xS-dhW"/>
                             <constraint firstItem="qgY-0J-aRV" firstAttribute="leading" secondItem="NEX-Dh-LbA" secondAttribute="leading" id="R9d-F0-hb9"/>
+                            <constraint firstItem="qgY-0J-aRV" firstAttribute="top" secondItem="wRj-il-Ipw" secondAttribute="bottom" constant="5" id="RNj-av-UUs"/>
                             <constraint firstItem="QX2-i0-NEW" firstAttribute="leading" secondItem="NEX-Dh-LbA" secondAttribute="leading" constant="20" id="Su1-wo-ULz"/>
                             <constraint firstItem="Bet-tz-wD9" firstAttribute="centerX" secondItem="pfX-Ld-6jO" secondAttribute="centerX" id="ULA-8i-n54"/>
                             <constraint firstItem="QCD-DR-lR1" firstAttribute="top" secondItem="SLb-h8-X11" secondAttribute="bottom" id="fy4-df-McS"/>
+                            <constraint firstItem="wRj-il-Ipw" firstAttribute="leading" secondItem="NEX-Dh-LbA" secondAttribute="leading" constant="20" id="glX-bS-Kgi"/>
                             <constraint firstItem="QX2-i0-NEW" firstAttribute="top" secondItem="QCD-DR-lR1" secondAttribute="bottom" constant="20" id="mAC-Fm-N7j"/>
                             <constraint firstItem="NEX-Dh-LbA" firstAttribute="bottom" secondItem="Bet-tz-wD9" secondAttribute="bottom" constant="20" id="p9u-zF-BEI"/>
+                            <constraint firstItem="wRj-il-Ipw" firstAttribute="top" secondItem="QX2-i0-NEW" secondAttribute="bottom" constant="20" id="saf-PL-Rpx"/>
                             <constraint firstItem="NEX-Dh-LbA" firstAttribute="trailing" secondItem="QX2-i0-NEW" secondAttribute="trailing" constant="20" id="wa3-ml-7md"/>
+                            <constraint firstAttribute="trailing" secondItem="wRj-il-Ipw" secondAttribute="trailing" constant="20" id="xVP-M6-vix"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" style="editor" id="YZK-aj-hF3"/>
+                    <navigationItem key="navigationItem" style="editor" id="YZK-aj-hF3">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="trash" id="hni-DV-zwy">
+                            <connections>
+                                <action selector="deletedPoem:" destination="DoV-LX-xUN" id="Tas-fJ-ii9"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="colorsCollection" destination="qgY-0J-aRV" id="coS-hu-8Gv"/>
+                        <outlet property="deleteButton" destination="hni-DV-zwy" id="J20-oL-Pop"/>
                         <outlet property="headerTextField" destination="QCD-DR-lR1" id="hyj-QI-Y17"/>
                         <outlet property="mainTextView" destination="QX2-i0-NEW" id="sy8-My-Vsr"/>
                         <outlet property="starButton" destination="SLb-h8-X11" id="0AY-Qe-G7J"/>
@@ -546,11 +578,12 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="OR0-4x-6El"/>
+        <segue reference="qyt-X9-ege"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
     <resources>
         <image name="book" catalog="system" width="128" height="99"/>
+        <image name="rectangle.and.pencil.and.ellipsis.rtl" catalog="system" width="128" height="92"/>
         <image name="star.bubble" catalog="system" width="128" height="110"/>
         <image name="star.fill" catalog="system" width="128" height="116"/>
         <image name="star.square.fill" catalog="system" width="128" height="114"/>
