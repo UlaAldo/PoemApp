@@ -24,3 +24,17 @@ extension UILabel {
     }
 
 }
+
+extension Date {
+
+    func format(format:String = "dd-MM-yyyy HH:mm") -> Date {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = format
+        let dateString = dateFormatter.string(from: self)
+        if let newDate = dateFormatter.date(from: dateString) {
+            return newDate
+        } else {
+            return self
+        }
+    }
+}
