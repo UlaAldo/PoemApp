@@ -54,16 +54,15 @@ class WriterViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setLastPoem()
+        registerForNotifications()
         
     }
     
-//    override func viewDidAppear(_ animated: Bool) {
-//        super.viewDidAppear (animated)
-//        let layoutMargins: CGFloat = self.colorsCollection.layoutMargins.left + self.colorsCollection.layoutMargins.right
-//        let sideInset = (self.view.frame.width / 2) - layoutMargins
-//        self.colorsCollection.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: sideInset)
-//
-//    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self)
+    }
+
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -261,5 +260,29 @@ extension WriterViewController: UITextFieldDelegate, UITextViewDelegate {
     @objc func action(sender: UIBarButtonItem) {
         self.view.endEditing(true)
         self.navigationItem.rightBarButtonItem? = deleteButton
+    }
+    
+    func registerForNotifications() {
+        NotificationCenter.default.addObserver(self, selector:#selector(self.keyboardWasShown(notification:)), name:UIResponder.keyboardDidShowNotification, object:nil)
+        NotificationCenter.default.addObserver(self, selector:#selector(self.keyboardWillBeHidden(notification:)), name:UIResponder.keyboardWillHideNotification, object:nil)
+    }
+    
+    @objc func keyboardWasShown(notification: NSNotification) {
+        let info = notification.userInfo
+        if let keyboardRect = info?[UIResponder.keyboardFrameBeginUserInfoKey] as? CGRect {
+            let keyboardSize = keyboardRect.size
+            mainTextView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height - 200, right: 0)
+            mainTextView.scrollIndicatorInsets = mainTextView.contentInset
+        }
+        
+    }
+    
+    @objc func keyboardWillBeHidden(notification: NSNotification) {
+        mainTextView.contentInset = .zero
+        mainTextView.scrollIndicatorInsets = .zero
+    }
+    
+    @objc func preferredContentSizeChanged(notification: NSNotification) {
+        mainTextView.font = UIFont.preferredFont(forTextStyle: UIFont.TextStyle.body)
     }
 }
