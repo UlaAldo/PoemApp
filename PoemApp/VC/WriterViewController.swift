@@ -7,7 +7,7 @@
 
 import UIKit
 
-class WriterViewController: UIViewController, UITextViewDelegate {
+class WriterViewController: UIViewController {
     
     // MARK: - IB Outlets
     @IBOutlet var starButton: UIButton!
@@ -40,8 +40,8 @@ class WriterViewController: UIViewController, UITextViewDelegate {
     // MARK: - Life cycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        setDesign()
-        setToolbar()
+        setDesignView()
+//        setToolbar()
         setCollectionView()
         colors = [one, two, three, four, five, six, seven, eight, nine, ten, eleven]
         self.tabBarController?.tabBar.isHidden = true
@@ -54,10 +54,16 @@ class WriterViewController: UIViewController, UITextViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setLastPoem()
-        let layoutMargins: CGFloat = self.colorsCollection.layoutMargins.left + self.colorsCollection.layoutMargins.right
-        let sideInset = (self.view.frame.width / 2) - layoutMargins
-        self.colorsCollection.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: sideInset)
+        
     }
+    
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear (animated)
+//        let layoutMargins: CGFloat = self.colorsCollection.layoutMargins.left + self.colorsCollection.layoutMargins.right
+//        let sideInset = (self.view.frame.width / 2) - layoutMargins
+//        self.colorsCollection.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: sideInset)
+//
+//    }
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -67,7 +73,6 @@ class WriterViewController: UIViewController, UITextViewDelegate {
                 poem.headerPoem = headerTextField.text
                 poem.textPoem = mainTextView.text
                 poem.star = status
-//                let date = Date()
                 poem.date = Date().format()
                 
                 StorageManager.shared.savePoem()
@@ -114,7 +119,7 @@ class WriterViewController: UIViewController, UITextViewDelegate {
         }
     }
     
-    private func setDesign() {
+    private func setDesignView() {
         mainTextView.layer.cornerRadius = 10
         mainTextView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
         mainTextView.layoutManager.delegate = self
@@ -182,7 +187,7 @@ class WriterViewController: UIViewController, UITextViewDelegate {
         
         if let cell = self.centerCell {
             let offsetX = centerPoint.x - cell.center.x
-            if offsetX < -15 || offsetX > 15 {
+            if offsetX < -20 || offsetX > 20 {
                 cell.transformToStandard()
                 self.centerCell = nil
             }
@@ -190,40 +195,7 @@ class WriterViewController: UIViewController, UITextViewDelegate {
     }
 }
 
-// MARK: - extension: NSLayoutManagerDelegate
-extension WriterViewController: NSLayoutManagerDelegate {
-    
-    func layoutManager(_ layoutManager: NSLayoutManager, lineSpacingAfterGlyphAt glyphIndex: Int, withProposedLineFragmentRect rect: CGRect) -> CGFloat {
-        15
-    }
-}
 
-// MARK: - UITextFieldDelegate
-extension WriterViewController: UITextFieldDelegate {
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesBegan(touches, with: event)
-        view.endEditing(true)
-    }
-    
-    func setToolbar() {
-        let toolbar = UIToolbar()
-        toolbar.sizeToFit()
-        toolbar.barStyle = .default
-        let done = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(done))
-        toolbar.items = [
-            UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil),
-            done
-        ]
-        done.tintColor = UIColor(named: "Orange")
-        mainTextView.inputAccessoryView = toolbar
-        headerTextField.inputAccessoryView = toolbar
-    }
-    
-    @objc private func done() {
-        self.view.endEditing(true)
-    }
-}
 
 // MARK: - UICollectionViewDataSource
 extension WriterViewController: UICollectionViewDataSource {
@@ -253,7 +225,41 @@ extension WriterViewController: UICollectionViewDelegate {
         headerTextField.backgroundColor = color
         
         colorsCollection.scrollToItem(at: IndexPath(item: indexPath.item, section: 0), at: .centeredHorizontally, animated: true)
+
     }
 }
 
+// MARK: - extension: NSLayoutManagerDelegate
+extension WriterViewController: NSLayoutManagerDelegate {
+    
+    func layoutManager(_ layoutManager: NSLayoutManager, lineSpacingAfterGlyphAt glyphIndex: Int, withProposedLineFragmentRect rect: CGRect) -> CGFloat {
+        15
+    }
+}
 
+// MARK: - UITextFieldDelegate
+extension WriterViewController: UITextFieldDelegate, UITextViewDelegate {
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        view.endEditing(true)
+    }
+    
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "Done", style: .done, target: self, action: #selector(self.action(sender:)))
+        
+        return true
+    }
+    
+    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(title: "Done", style: .done, target: self, action: #selector(self.action(sender:)))
+        
+        return true
+    }
+    
+    @objc func action(sender: UIBarButtonItem) {
+        self.view.endEditing(true)
+        self.navigationItem.rightBarButtonItem? = deleteButton
+    }
+}
