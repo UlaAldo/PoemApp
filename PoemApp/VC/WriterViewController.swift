@@ -130,6 +130,7 @@ class WriterViewController: UIViewController {
         mainTextView.delegate = self
         headerTextField.tintColor = UIColor(named: "DarkGreen")
         mainTextView.tintColor = UIColor(named: "DarkGreen")
+//        mainTextView.font = UIFont(name: "NotoSerif-Regular", size: 17)
         
     }
     
@@ -276,9 +277,9 @@ extension WriterViewController: UITextFieldDelegate, UITextViewDelegate {
     }
     
     @objc func onKeyboardAppear(_ notification: NSNotification) {
-        let info = notification.userInfo!
-        let rect: CGRect = info[UIResponder.keyboardFrameBeginUserInfoKey] as! CGRect
-        let kbSize = rect.size
+//        let info = notification.userInfo!
+//        let rect: CGRect = info[UIResponder.keyboardFrameBeginUserInfoKey] as! CGRect
+//        let kbSize = rect.size
 
         let insets = UIEdgeInsets(top: 0, left: 0, bottom: 100, right: 0)
         mainTextView.contentInset = insets
