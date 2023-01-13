@@ -124,7 +124,7 @@ class WriterViewController: UIViewController {
     
     private func setDesignView() {
         mainTextView.layer.cornerRadius = 10
-//        mainTextView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
+//        mainTextView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 50, right: 0)
 //        mainTextView.layoutManager.delegate = self
         headerTextField.delegate = self
         mainTextView.delegate = self
@@ -271,8 +271,8 @@ extension WriterViewController: UITextFieldDelegate, UITextViewDelegate {
     
     // MARK: - Keyboard
     func registerForKeyboardNotifications() {
-        NotificationCenter.default.addObserver(self, selector: #selector(onKeyboardAppear(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(onKeyboardDisappear(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onKeyboardAppear(_:)), name: UIResponder.keyboardDidShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onKeyboardDisappear(_:)), name: UIResponder.keyboardDidHideNotification, object: nil)
     }
     
     @objc func onKeyboardAppear(_ notification: NSNotification) {
@@ -280,7 +280,7 @@ extension WriterViewController: UITextFieldDelegate, UITextViewDelegate {
         let rect: CGRect = info[UIResponder.keyboardFrameBeginUserInfoKey] as! CGRect
         let kbSize = rect.size
 
-        let insets = UIEdgeInsets(top: 0, left: 0, bottom: kbSize.height - 200, right: 0)
+        let insets = UIEdgeInsets(top: 0, left: 0, bottom: 100, right: 0)
         mainTextView.contentInset = insets
         mainTextView.scrollIndicatorInsets = insets
 
