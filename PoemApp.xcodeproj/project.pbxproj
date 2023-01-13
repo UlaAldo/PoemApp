@@ -455,6 +455,7 @@
 				DEVELOPMENT_TEAM = GJ8322288B;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PoemApp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "my Poems";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -485,6 +486,7 @@
 				DEVELOPMENT_TEAM = GJ8322288B;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PoemApp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "my Poems";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

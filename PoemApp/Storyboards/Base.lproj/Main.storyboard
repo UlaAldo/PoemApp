@@ -236,6 +236,7 @@
                                                 <constraint firstItem="Goi-2P-AhK" firstAttribute="leading" secondItem="Su5-Zx-1ic" secondAttribute="leadingMargin" id="E1u-w0-Gv2"/>
                                                 <constraint firstItem="Qu2-Sp-qT4" firstAttribute="leading" secondItem="Su5-Zx-1ic" secondAttribute="leading" constant="20" id="cNj-c5-OXE"/>
                                                 <constraint firstAttribute="bottom" secondItem="Qu2-Sp-qT4" secondAttribute="bottom" constant="3" id="fHl-iw-fBs"/>
+                                                <constraint firstItem="Qu2-Sp-qT4" firstAttribute="top" secondItem="Goi-2P-AhK" secondAttribute="bottom" constant="9.5" id="oxJ-LT-1V3"/>
                                                 <constraint firstItem="638-vM-txo" firstAttribute="leading" secondItem="Su5-Zx-1ic" secondAttribute="leadingMargin" id="rVR-E0-Fvo"/>
                                                 <constraint firstItem="06O-9e-NJ5" firstAttribute="top" secondItem="Su5-Zx-1ic" secondAttribute="topMargin" constant="20" id="t5K-Ee-2Jn"/>
                                                 <constraint firstItem="06O-9e-NJ5" firstAttribute="centerY" secondItem="Su5-Zx-1ic" secondAttribute="centerY" id="w27-EZ-X64"/>
@@ -372,10 +373,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="QX2-i0-NEW">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="QX2-i0-NEW">
                                 <rect key="frame" x="20" y="196" width="374" height="413"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <color key="textColor" name="Text"/>
                                 <fontDescription key="fontDescription" type="italicSystem" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
