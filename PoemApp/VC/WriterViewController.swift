@@ -44,11 +44,7 @@ class WriterViewController: UIViewController {
         setCollectionView()
         colors = [one, two, three, four, five, six, seven, eight, nine, ten, eleven]
         self.tabBarController?.tabBar.isHidden = true
-        
-//        mainTextView.scrollRangeToVisible(NSRange(..<mainTextView.text.endIndex, in: mainTextView.text))
 
-        
-     
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -124,13 +120,10 @@ class WriterViewController: UIViewController {
     
     private func setDesignView() {
         mainTextView.layer.cornerRadius = 10
-//        mainTextView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 50, right: 0)
-//        mainTextView.layoutManager.delegate = self
         headerTextField.delegate = self
         mainTextView.delegate = self
         headerTextField.tintColor = UIColor(named: "DarkGreen")
         mainTextView.tintColor = UIColor(named: "DarkGreen")
-//        mainTextView.font = UIFont(name: "NotoSerif-Regular", size: 17)
         
     }
     
@@ -277,10 +270,6 @@ extension WriterViewController: UITextFieldDelegate, UITextViewDelegate {
     }
     
     @objc func onKeyboardAppear(_ notification: NSNotification) {
-//        let info = notification.userInfo!
-//        let rect: CGRect = info[UIResponder.keyboardFrameBeginUserInfoKey] as! CGRect
-//        let kbSize = rect.size
-
         let insets = UIEdgeInsets(top: 0, left: 0, bottom: 100, right: 0)
         mainTextView.contentInset = insets
         mainTextView.scrollIndicatorInsets = insets

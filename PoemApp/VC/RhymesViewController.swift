@@ -51,6 +51,7 @@ class RhymesViewController: UIViewController {
     private func fetchRhymes() {
         spinner.isHidden = false
         spinner.startAnimating()
+        
         DispatchQueue.global(qos: .userInitiated).async {
             NetworkManager.shared.fetchRhymes(self.word) { result in
                 switch result {
